@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./components/header";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+
+const franklin = localFont({
+  src: "./fonts/LibreFranklin-VariableFont_wght.ttf",
+  variable: "--font-franklin",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+const franklin_light = localFont({
+  src: "./fonts/LibreFranklin-Light.ttf",
+  variable: "--font-franklin-light",
   weight: "100 900",
 });
 
@@ -25,9 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${franklin.variable} ${franklin_light.variable} antialiased`}>
+        <Header />
         {children}
       </body>
     </html>
