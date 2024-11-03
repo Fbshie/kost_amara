@@ -1,8 +1,20 @@
+import Link from "next/link";
+
 export default function header() {
     return(
-        <div className="hdr ">
-            
-            <p className="">Ketersedian kamar</p>
-        </div>
+        <header>
+            <div className="container flex items-center justify-between mx-auto  px-2 py-4"> 
+                
+                <div className="">
+                    <img src="logo3.png" alt="" />
+                </div>
+                
+                <div >
+                    <Link className="mr-6" href={'/'}>Lokasi</Link>
+                    <Link className="rounded-xl border-2 p-2 gap-4 border-primary" href={'/'} >Ketersedian kamar</Link>
+                </div>
+                
+            </div>
+        </header>
     );
 }

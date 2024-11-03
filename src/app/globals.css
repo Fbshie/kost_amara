@@ -9,12 +9,18 @@
 
 
 
-div.hdr {
+header {
   background-color: var(--second);
   color: var(--primary);
-
+  border-color: var(--primary);
 }
 
+.hero-img{
+  background-image: url(/hero1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 body {
   
