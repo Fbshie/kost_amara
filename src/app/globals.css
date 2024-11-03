@@ -16,9 +16,23 @@ header {
 }
 
 .hero-img{
-  background-image: url(/hero1.jpg);
+  background-image: url(/hero2.jpg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.list1-img{
+  background-image: url(/list/list1.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.list2-img{
+  background-image: url(/list/list2.jpg);
+  background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
