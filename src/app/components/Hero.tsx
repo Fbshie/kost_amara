@@ -7,7 +7,7 @@ export default function Hero(){
                
                 
 
-                <h1 className="ml-10 text-4xl font-bold text-primary ">
+                <h1 className="ml-10 text-3xl font-bold text-primary ">
                 Kost Putri Amara Pontianak
 
                     <div className="text-lg">

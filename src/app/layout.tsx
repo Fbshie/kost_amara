@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${franklin.variable} ${franklin_light.variable} antialiased`}>
+       
         <Header />
         {children}
       </body>
