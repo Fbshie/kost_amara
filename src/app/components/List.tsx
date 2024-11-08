@@ -2,7 +2,7 @@ export default function List() {
     return (
         <main className="max-w-6xl mx-auto p-2">
 
-            <div className="py-5">
+            <div className="py-3">
                 <h2 className="text-second text-center text-2xl font-bold">Fasilitas</h2>
 
                 <div className="grid grid-cols-2 gap-6 mx-3 my-10">
@@ -27,9 +27,11 @@ export default function List() {
                         <p className="text-l font-semibold text-second my-2">2 Kamar Mandi Luar <br /> Dapur Umum</p>
                     </div>
 
-                    
+                
                 {/* end kolom fasilitas */}
                 </div>
+
+               
 
                 
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Hero from "./components/Hero";
 import List from "./components/List";
+import Loc from "./components/Loc";
 
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <List/>
+      <Loc />
     </>
    
   );

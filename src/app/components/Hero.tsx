@@ -1,25 +1,27 @@
 
 
-export default function Hero(){
+export default function Hero() {
     return (
-        <section className=" hero-img h-64 flex items-center justify-start">
-            
-               
-                
+        <section className=" hero-img h-64 flex items-center justify-start ">
 
+
+            <div className="mx-16">
                 <h1 className="ml-10 text-3xl font-bold text-primary ">
-                Kost Putri Amara Pontianak
+                    Kost Putri Amara Pontianak
 
                     <div className="text-lg">
-                        
-                        Dekat dengan 
+
+                        Dekat dengan
                         Untan, Polnep, dan Ump
                     </div>
-                    
-                </h1>
 
-                
-            
+                </h1>
+            </div>
+
+
+
+
+
 
         </section>
 
