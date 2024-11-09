@@ -10,7 +10,7 @@ export default function header() {
                 </div>
                 
                 <div >
-                    <Link className="mr-6" href={'/'}>Lokasi</Link>
+                    <Link className="mr-6" href={''}>Lokasi</Link>
                     <Link className="rounded-xl border-2 p-2 gap-4 border-primary" href={'/'} >Ketersedian kamar</Link>
                 </div>
                 
