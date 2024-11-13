@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function LoginPage() {
 
@@ -20,8 +21,8 @@ export default function LoginPage() {
             password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
         ) {
             // Jika status VALID
-            sessionStorage.setItem('isAdmin', 'true'); // lokal atau session
-            router.push('/admin');  // Arahkan ke hal Admin
+            sessionStorage.setItem('isAdmin', 'true'); 
+            router.push('/admin');  
         } else {
             setError('Username atau Password salah.');
         }
