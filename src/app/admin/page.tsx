@@ -14,12 +14,17 @@ const AdminPage = () => {
         if (!isAdmin) {
             router.push('/login');
         }
-    }, [router]); 
+    }, [router]);
+    
+    const handleLogout = () => {
+        sessionStorage.removeItem('isAdmin');
+        router.push('/login');
+    };
 
     return (
         <div>
             hal admin
-            <button type="submit" >log out</button>
+            <button onClick={handleLogout} type="submit" >log out</button>
         </div>
         
     );
