@@ -12,6 +12,8 @@ export default function addSewa() {
     const [ktp, setKtp] = useState("");
     const [kamar, setKamar] = useState("");
 
+   
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!nama || !hp) {
@@ -20,7 +22,20 @@ export default function addSewa() {
         }
 
         try {
-            console.log("success");
+            const res = await fetch("http://localhost:3000/api/sewa",{
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({nama,hp,klg,ktp,kamar}),
+            });
+
+            if (res.ok) {
+                router.push("/admin");
+            } else {
+                throw new Error("Gagal menambahkan data");
+            }
+
         } catch (error) {
             console.log(error);
         }
