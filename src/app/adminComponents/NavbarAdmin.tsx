@@ -1,13 +1,11 @@
 "use client"
 
-import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-import NavbarAdmin from "../adminComponents/NavbarAdmin";
 
-export default function AdminPage() {
+export default function NavbarAdmin() {
 
-    const router = useRouter();
+  const router = useRouter();
 
     useEffect(() => {
         const isAdmin = sessionStorage.getItem('isAdmin');
@@ -22,10 +20,9 @@ export default function AdminPage() {
     };
 
     return (
-
-        <>
-            {/* Header */}
-            <header>
+      <>
+      {/* Header */}
+      <header>
                 <div className="navbar bg-second mb-4">
                     <div className="flex-1">
                         <a className="btn btn-ghost text-primary text-xl">Amara Admin</a>
@@ -51,18 +48,7 @@ export default function AdminPage() {
                 </div>
             </header>
             {/* Header selesai */}
-
-
-
-
-            <div className=" mx-5 text-right">
-                <a href="admin/addSewa">
-                <button className="btn btn-warning">Tambah data</button>
-                </a>
-
-            </div>
-
-        </>
+      
+      </>
     );
-
 }

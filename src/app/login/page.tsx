@@ -2,6 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import Navbar from "../components/Navbar";
+
 import Cookies from "js-cookie";
 
 export default function LoginPage() {
@@ -29,6 +31,8 @@ export default function LoginPage() {
     };
 
     return (
+        <>
+        <Navbar />
         <div className="grid place-items-center h-screen">
             <div className="shadow-lg p-5 rounded-lg bg-white ">
                 <h1 className="font-semibold text-2xl my-4">Login</h1>
@@ -50,5 +54,7 @@ export default function LoginPage() {
                 </form>
             </div>
         </div>
+        
+        </>
     );
 }

@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
         <footer className="bg-second">
-             <hr  className="border-t-4 border-gray-600"/>
+             <hr  className="border-t-2 border-gray-600"/>
 
         <div className="max-w-6xl mx-auto mt-2 grid grid-cols-1  md:grid-cols-3  gap-2 items-center">
             
