@@ -1,9 +1,8 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import { useEffect } from "react";
-import NavbarAdmin from "../adminComponents/NavbarAdmin";
+import TableSewa from "./table/TableSewa";
 
 export default function AdminPage() {
 
@@ -21,12 +20,13 @@ export default function AdminPage() {
         router.push('/login');
     };
 
+
     return (
 
         <>
             {/* Header */}
             <header>
-                <div className="navbar bg-second mb-4">
+                <div className="navbar bg-second mb-8">
                     <div className="flex-1">
                         <a className="btn btn-ghost text-primary text-xl">Amara Admin</a>
 
@@ -57,10 +57,11 @@ export default function AdminPage() {
 
             <div className=" mx-5 text-right">
                 <a href="admin/addSewa">
-                <button className="btn btn-warning">Tambah data</button>
+                    <button className="btn btn-warning">Tambah data</button>
                 </a>
-
             </div>
+
+        <TableSewa />
 
         </>
     );
