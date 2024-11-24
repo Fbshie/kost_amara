@@ -53,6 +53,13 @@ export default function TableSewa() {
                           <td> {rs.klg}</td>
                           <td> {rs.ktp}</td>
                           <td> {rs.kamar}</td>
+                          <th>
+                            <a href={`admin/editSewa/${rs._id}`}>
+                            <button className="btn btn-info">Edit</button>
+                            </a>
+                            
+                            Delete
+                          </th>
                   </tr>
               
           ))}
