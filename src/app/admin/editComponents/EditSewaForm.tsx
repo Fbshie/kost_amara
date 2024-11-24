@@ -78,7 +78,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 <input
                     onChange={(e) => setNewKamar(Number(e.target.value))}
                     value={newKamar}
-                    type="number"
+                    type="text"
                     className="input input-bordered input-warning w-full max-w-xs" />
 
                     <button

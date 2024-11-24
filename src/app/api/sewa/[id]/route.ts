@@ -14,9 +14,9 @@ export async function PUT(request: Request, {params}: {params: {id : string}} ) 
     const { id } = params;
 
     const body: UpdateSewaPayload = await request.json();
-    const { newNama: nama,  newHp: hp, newKlg:klg, newKtp:ktp, newKamar:kmr} = body;
+    const { newNama: nama,  newHp: hp, newKlg:klg, newKtp:ktp, newKamar:kamar} = body;
     await connectMongoDB();
-    await Sewa.findByIdAndUpdate(id, {nama,hp,klg,ktp,kmr});
+    await Sewa.findByIdAndUpdate(id, {nama,hp,klg,ktp,kamar});
     return NextResponse.json ({ message: "Data sewa Updated" }, { status: 200 });
 }
 
