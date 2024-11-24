@@ -7,7 +7,7 @@ interface EditSewaFormProps {
     nama: string;
     hp: string;
     klg: string;
-    ktp: number;
+    ktp: string;
     kamar: number;
 }
 
@@ -70,7 +70,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     className="input input-bordered input-warning w-full max-w-xs" />
 
                 <input
-                    onChange={(e) => setNewKtp(Number(e.target.value))}
+                    onChange={(e) => setNewKtp(e.target.value)}
                     value={newKtp}
                     type="text"
                     className="input input-bordered input-warning w-full max-w-xs" />

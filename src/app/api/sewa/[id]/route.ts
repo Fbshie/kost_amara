@@ -4,9 +4,9 @@ import Sewa from "../../../../../models/SewaModel";
 
 type UpdateSewaPayload = {
     newNama: string;
-    newHp: number;
+    newHp: string;
     newKlg: string;
-    newKtp: number;
+    newKtp: string;
     newKamar: number;
   };
 
