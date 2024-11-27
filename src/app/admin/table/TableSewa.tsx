@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import DeleteSewa from "../delete/DeleteSewa";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url, {cache: "no-store"});
@@ -35,6 +36,7 @@ export default function TableSewa() {
               <th>Alamat Klg</th>
               <th>Nik</th>
               <th>No. Kmr</th>
+              <th>Tanggal masuk</th>
               <th></th>
             </tr>
           </thead>
@@ -53,12 +55,13 @@ export default function TableSewa() {
                           <td> {rs.klg}</td>
                           <td> {rs.ktp}</td>
                           <td> {rs.kamar}</td>
+                          <td> {rs.createdAt} </td>
                           <th>
                             <a href={`admin/editSewa/${rs._id}`}>
                             <button className="btn btn-info">Edit</button>
                             </a>
                             
-                            Delete
+                            <DeleteSewa id={rs._id}/>
                           </th>
                   </tr>
               

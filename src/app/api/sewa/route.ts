@@ -1,6 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connectMongoDB from "../../../../libs/mongodb";
 import Sewa from "../../../../models/SewaModel";
+
+
 
 export async function GET() {
     await connectMongoDB();
@@ -13,4 +15,11 @@ export async function POST(request: Request) {
     await connectMongoDB();
     await Sewa.create({ nama, hp, klg, ktp, kamar });
     return NextResponse.json({ message: "Data ditambahkan" }, { status: 201 });
+}
+
+export async function DELETE(request: NextRequest) {
+    const id = request.nextUrl.searchParams.get("id");
+    await connectMongoDB();
+    await Sewa.findByIdAndDelete(id);
+    return NextResponse.json({ message: "Data dihapus" }, {status:200});
 }
