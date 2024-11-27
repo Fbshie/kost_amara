@@ -1,5 +1,4 @@
 import useSWR from "swr";
-import DeleteSewa from "../delete/DeleteSewa";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url, {cache: "no-store"});
@@ -9,8 +8,8 @@ const fetcher = async (url: string) => {
   return res.json();
 };
 
-export default function TableSewa() {
-  const { data, error, isLoading } = useSWR("http://localhost:3000/api/sewa", fetcher);
+export default function TableLapor() {
+  const { data, error, isLoading } = useSWR("http://localhost:3000/api/lapor", fetcher);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -28,32 +27,26 @@ export default function TableSewa() {
               
               
               <th>Nama</th>
-              <th>No. Hp</th>
-              <th>Alamat Klg</th>
-              <th>Nik</th>
-              <th>No. Kmr</th>
-              <th>Tanggal masuk</th>
+              <th>No. Kamar</th>
+              <th>Isi Keluhan</th>
               <th></th>
             </tr>
           </thead>
       
           <tbody>
-              {data.sewa.map((rs: any) => (
+              {data.lapor.map((rs: any) => (
                   <tr className="hover" key={rs._id}>
                       
 
-                          <td> {rs.nama}</td>
-                          <td> {rs.hp}</td>
-                          <td> {rs.klg}</td>
-                          <td> {rs.ktp}</td>
-                          <td> {rs.kamar}</td>
-                          <td> {rs.createdAt} </td>
+                          <td> {rs.nama_lapor}</td>
+                          <td> {rs.kamar_lapor}</td>
+                          <td> {rs.isi_lapor}</td>
                           <th>
-                            <a href={`admin/editSewa/${rs._id}`}>
+                             <a href={`editLapor/${rs._id}`}>
                             <button className="btn btn-info">Edit</button>
                             </a>
                             
-                            <DeleteSewa id={rs._id}/>
+                            {/* <DeleteSewa id={rs._id}/> */}
                           </th>
                   </tr>
               

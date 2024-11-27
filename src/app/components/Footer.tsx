@@ -27,7 +27,7 @@ export default function Footer() {
            <div className=" my-9  grid ">
                 <h1 className="text-xl font-semibold text-primary text-center">AMARA KOST</h1> 
                     <div className="flex  p-1 mx-auto my-2">
-                        <a className="text-primary ml-2" href="">Laporkan Keluhan</a>
+                        <a className="text-primary ml-2" href="addLapor">Laporkan Keluhan</a>
                     </div>
 
                     <div className="flex  p-1 mx-auto my-2">

@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -25,18 +26,18 @@ export default function NavbarAdmin() {
       <header>
                 <div className="navbar bg-second mb-4">
                     <div className="flex-1">
-                        <a className="btn btn-ghost text-primary text-xl">Amara Admin</a>
+                        <a  className="btn btn-ghost text-primary text-xl">Amara Admin</a>
 
                     </div>
                     <div className="flex-none">
                         <ul className="menu menu-horizontal px-1">
-                            <li><a className="text-primary">Home</a></li>
+                            <li><a href="./" className="text-primary">Home</a></li>
                             <li>
                                 <details>
                                     <summary className="text-primary">Nav</summary>
                                     <ul className="bg-second rounded-t-none p-2 ">
-                                        <li><a>Penyewa</a></li>
-                                        <li><a>Keluhan</a></li>
+                                        <li><Link href={"./"}>Penyewa</Link></li>
+                                        <li><Link href={"admin/laporPage"}>Keluhan</Link></li>
                                         <li><a>Ketersedian Kamar</a></li>
                                     </ul>
                                 </details>
