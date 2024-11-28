@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connectMongoDB from "../../../../libs/mongodb";
 import Lapor from "../../../../models/LaporModel";
 
@@ -14,4 +14,11 @@ export async function POST(request: Request) {
     await connectMongoDB();
     await Lapor.create({ nama_lapor, kamar_lapor, isi_lapor });
     return NextResponse.json({ message: "Data ditambahkan" }, { status: 201 });
+}
+
+export async function DELETE(request: NextRequest) {
+    const id = request.nextUrl.searchParams.get("id");
+    await connectMongoDB();
+    await Lapor.findByIdAndDelete(id);
+    return NextResponse.json({ message: "Data dihapus" }, {status:200});
 }

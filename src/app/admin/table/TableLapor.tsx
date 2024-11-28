@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import DeleteLapor from "../delete/DeleteLapor";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url, {cache: "no-store"});
@@ -46,7 +47,7 @@ export default function TableLapor() {
                             <button className="btn btn-info">Edit</button>
                             </a>
                             
-                            {/* <DeleteSewa id={rs._id}/> */}
+                            <DeleteLapor id={rs._id}/>
                           </th>
                   </tr>
               
