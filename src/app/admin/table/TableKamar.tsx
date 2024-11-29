@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import DeleteLapor from "../delete/DeleteLapor";
+import DeleteKamar from "../delete/DeleteKamar";
 
 const fetcher = async (url: string) => {
   const res = await fetch(url, {cache: "no-store"});
@@ -9,8 +9,8 @@ const fetcher = async (url: string) => {
   return res.json();
 };
 
-export default function TableLapor() {
-  const { data, error, isLoading } = useSWR("http://localhost:3000/api/lapor", fetcher);
+export default function TableKamar() {
+  const { data, error, isLoading } = useSWR("http://localhost:3000/api/kamar", fetcher);
 
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -27,27 +27,25 @@ export default function TableLapor() {
             <tr>
               
               
-              <th>Nama</th>
-              <th>No. Kamar</th>
-              <th>Isi Keluhan</th>
+              
+              <th>Ketersedian kamar</th>
               <th></th>
             </tr>
           </thead>
       
           <tbody>
-              {data.lapor.map((rs: any) => (
+              {data.kamar.map((rs: any) => (
                   <tr className="hover" key={rs._id}>
                       
 
-                          <td> {rs.nama_lapor}</td>
-                          <td> {rs.kamar_lapor}</td>
-                          <td> {rs.isi_lapor}</td>
+                          <td> {rs.jumlah}</td>
+                          
                           <th>
-                             <a href={`editLapor/${rs._id}`}>
+                             <a href={`admin/editKamar/${rs._id}`}>
                             <button className="btn btn-info">Edit</button>
                             </a>
                             
-                            <DeleteLapor id={rs._id}/>
+                            <DeleteKamar id={rs._id}/>
                           </th>
                   </tr>
               

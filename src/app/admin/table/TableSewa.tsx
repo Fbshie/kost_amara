@@ -12,7 +12,7 @@ const fetcher = async (url: string) => {
 export default function TableSewa() {
   const { data, error, isLoading } = useSWR("http://localhost:3000/api/sewa", fetcher);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
 
    

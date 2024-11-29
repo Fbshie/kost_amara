@@ -24,7 +24,7 @@ export default function NavbarAdmin() {
       <>
       {/* Header */}
       <header>
-                <div className="navbar bg-second mb-4">
+                <div className="navbar bg-second mb-7">
                     <div className="flex-1">
                         <a  className="btn btn-ghost text-primary text-xl">Amara Admin</a>
 
@@ -36,9 +36,9 @@ export default function NavbarAdmin() {
                                 <details>
                                     <summary className="text-primary">Nav</summary>
                                     <ul className="bg-second rounded-t-none p-2 ">
-                                        <li><Link href={"./"}>Penyewa</Link></li>
-                                        <li><Link href={"admin/laporPage"}>Keluhan</Link></li>
-                                        <li><a>Ketersedian Kamar</a></li>
+                                        <li><Link href={"/admin"}>Penyewa</Link></li>
+                                        <li><Link href={"/laporPage"}>Keluhan</Link></li>
+                                        <li><Link href={"/kamarPage"}>Isi Kamar</Link></li>
                                     </ul>
                                 </details>
                             </li>

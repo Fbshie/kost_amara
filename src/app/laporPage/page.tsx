@@ -1,12 +1,14 @@
 "use client"
 
-import NavbarAdmin from "../adminComponents/NavbarAdmin";
-import TableLapor from "../table/TableLapor";
+import NavbarAdmin from "../admin/adminComponents/NavbarAdmin"
+import TableLapor from "../admin/table/TableLapor"
+
+
 
 export default function laporPage() {
     return (
         <>
-        <NavbarAdmin />
+        <NavbarAdmin/>
         Halaman Laporan
         <TableLapor />
         </>
