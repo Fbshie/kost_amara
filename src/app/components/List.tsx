@@ -8,7 +8,7 @@ export default function List() {
                 <div className="grid grid-cols-2 gap-6 mx-3 my-10">
                 {/* kolom fasilitas */}
                     <div className="inline-block text-center">
-                        <img className="h-auto rounded-2xl  mx-auto " src="list/list1.jpg" alt="" />
+                        <img className="h-auto rounded-2xl  mx-auto " src="list/list1.1.jpg" alt="" />
                         <p className="text-l font-semibold text-second my-2">Kipas Angin, Kasur, dan Lemari</p>
                     </div>
 

@@ -6,11 +6,13 @@ export default function header() {
             <div className="container flex items-center justify-between mx-auto  px-2 py-4"> 
                 
                 <div className="">
+                    <Link href={'/'}>
                     <img src="logo3.png" alt="" />
+                    </Link>
                 </div>
                 
                 <div >
-                    <Link className="mr-6" href={''}>Lokasi</Link>
+                    <Link className="mr-6" href={'https://maps.app.goo.gl/mjGEiuxtC7jp6Hz79'}>Lokasi</Link>
                     <Link className="rounded-xl border-2 p-2 gap-4 border-primary" href={'/infoKamar'} >Ketersedian kamar</Link>
                 </div>
                 

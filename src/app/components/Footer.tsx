@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
     return (
         <footer className="bg-second">
@@ -5,8 +7,11 @@ export default function Footer() {
 
         <div className="max-w-6xl mx-auto mt-2 grid grid-cols-1  md:grid-cols-3  gap-2 items-center">
             
+
            <div className=" my-9 flex justify-center items-center">
+            <Link href={'/'}>
                 <img src="logo1.png" alt="" />
+            </Link>
            </div>
 
             {/* Social Media */}
@@ -31,7 +36,7 @@ export default function Footer() {
                     </div>
 
                     <div className="flex  p-1 mx-auto my-2">
-                        <a className="text-primary ml-2" href="">Cek Ketersedian Kamar</a>
+                        <a className="text-primary ml-2" href="/infoKamar">Cek Ketersedian Kamar</a>
                     </div>
                     
            </div>

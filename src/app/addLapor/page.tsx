@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 
 
@@ -49,7 +50,7 @@ export default function addLapor() {
         <>
            <Navbar />
 
-            <div className="flex justify-center">
+            <div className="flex justify-center my-28">
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
                     <h1 className="text-center text-xl font-semibold text-second">Isi keluhan anda</h1>
@@ -83,6 +84,8 @@ export default function addLapor() {
                 </form>
 
             </div>
+
+            <Footer />
 
         </>
 
