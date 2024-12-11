@@ -11,9 +11,9 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-    const {nama, hp, klg, ktp, kamar} = await request.json();
+    const {nama, hp, klg, ktp, kamar, tanggal} = await request.json();
     await connectMongoDB();
-    await Sewa.create({ nama, hp, klg, ktp, kamar });
+    await Sewa.create({ nama, hp, klg, ktp, kamar, tanggal });
     return NextResponse.json({ message: "Data ditambahkan" }, { status: 201 });
 }
 

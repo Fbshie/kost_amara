@@ -7,12 +7,13 @@ const topicScema = new Schema(
         klg: {type: String, required: true},
         ktp: {type: String, required: true},
         kamar: {type: Number, required: true},
+        tanggal: {type: String, required: true},
     },
     {
         timestamps: true,
     }
 );
 
-const SewaModel = mongoose.models.Sewa || mongoose.model("Sewa", topicScema);
+const SewaModel = mongoose.models.Sewa1 || mongoose.model("Sewa1", topicScema);
 
 export default SewaModel;
