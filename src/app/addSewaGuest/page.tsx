@@ -56,9 +56,9 @@ export default function addSewa() {
             <div className="flex justify-center my-9">
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-2 mx-4 my-6">
-                    <h1 className="text-center text-xl font-semibold text-second">Tambah Penyewa</h1>
+                    <h1 className="text-center text-xl font-semibold text-second">Form Penyewa</h1>
                     
-                    <div className=" px-4 py-3 rounded-md shadow-sm">
+                    <div className=" px-4 pt-3 ">
                     <p className="font-semibold text-gray-400">Nama</p>
                     <input
                         onChange={(e) => setNama(e.target.value)}
@@ -68,7 +68,7 @@ export default function addSewa() {
                         className="input input-bordered input-warning w-64 max-w-xs " />
                     </div>
 
-                    <div className=" px-4 py-3 rounded-md shadow-sm">
+                    <div className=" px-4">
                     <p className="font-semibold text-gray-400">No. HandPhone</p>
                     <input
                         onChange={(e) => setHp(e.target.value)}
@@ -78,7 +78,7 @@ export default function addSewa() {
                         className="input input-bordered input-warning w-64 max-w-xs" />
                         </div>
 
-                    <div className=" px-4 py-3 rounded-md shadow-sm">
+                    <div className=" px-4">
                     <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat (opsional)</p>
                     <input
                         onChange={(e) => setKlg(e.target.value)}
@@ -88,7 +88,7 @@ export default function addSewa() {
                         className="input input-bordered input-warning w-64 max-w-xs" />
                     </div>
 
-                    <div className=" px-4 py-3 rounded-md shadow-sm">
+                    <div className=" px-4 ">
                     <p className="font-semibold text-gray-400">No. Ktp (opsional)</p>
                     <input
                         onChange={(e) => setKtp(e.target.value)}
@@ -98,7 +98,7 @@ export default function addSewa() {
                         className="input input-bordered input-warning w-64 max-w-xs" />
                     </div>
 
-                    <div className=" px-4 py-3 rounded-md shadow-sm">
+                    <div className=" px-4 pb-3">
                     <p className="font-semibold text-gray-400">No. Kamar</p>
                     <input
                         onChange={(e) => setKamar(e.target.value)}

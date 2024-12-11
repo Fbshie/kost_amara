@@ -13,6 +13,6 @@ const topicScema = new Schema(
     }
 );
 
-const SewaModel = mongoose.models.Sewa11 || mongoose.model("Sewa11", topicScema);
+const SewaModel = mongoose.models.Sewa || mongoose.model("Sewa", topicScema);
 
 export default SewaModel;
