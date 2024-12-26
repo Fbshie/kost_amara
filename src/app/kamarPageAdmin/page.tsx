@@ -8,7 +8,7 @@ export default function laporPage() {
     return (
         <>
         <NavbarAdmin />
-
+        <div className="text-center font-bold my-6">Tabel Kamar</div>
         <div className=" mx-5 text-right">
                 <a href="admin/addKamar">
                     <button className="btn btn-warning">Tambah data Kamar</button>

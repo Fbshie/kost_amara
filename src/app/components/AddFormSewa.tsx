@@ -1,19 +1,22 @@
 "use client"
 
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import NavbarAdmin from "../adminComponents/NavbarAdmin";
-import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
+const Datetime = dynamic(() => import("react-datetime"), { 
+    ssr: false, 
+    loading: () => <p>Loading...</p> // Fallback selama render klien
+  });
 
 const renderCustomInput = (props: any, openCalendar: any) => (
-    <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
+    <div onClick={openCalendar} className="cursor-pointer border rounded py-2 text-gray-400 text-center">
         {props.value || "(Pilih tanggal)"} { }
     </div>
 );
 
-export default function addSewa() {
+export default function AddFormSewa() {
 
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");
@@ -21,13 +24,19 @@ export default function addSewa() {
     const [ktp, setKtp] = useState("");
     const [kamar, setKamar] = useState("");
     const [tanggal, setTanggal] = useState("");
+    const [isClient, setIsClient] = useState(false);
 
+    const router = useRouter();
+
+    useEffect(() => {
+        setIsClient(true); // Menandakan bahwa ini sudah dijalankan di klien
+      }, []);
 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!nama || !hp || !kamar || !tanggal || !klg || !ktp || !kamar) {
-            alert("Semua data wajib di isi!");
+            alert("Semua data Wajib di isi!");
             return;
         }
 
@@ -41,7 +50,8 @@ export default function addSewa() {
             });
 
             if (res.ok) {
-                router.push("/admin");
+                router.push("/");
+                alert("Terima Kasih sudah mengisi Form");
             } else {
                 throw new Error("Gagal menambahkan data");
             }
@@ -51,20 +61,21 @@ export default function addSewa() {
         }
     };
 
-    const router = useRouter();
+    if (!isClient) {
+        return null; // Menjaga agar tidak ada konten SSR yang ditampilkan sebelum klien siap
+      }
 
-
+    
 
     return (
 
-        <>
-            <NavbarAdmin />
-
+           
             <div className="flex justify-center my-9">
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
-                    <h1 className="text-center text-xl font-semibold text-second">Tambah Penyewa</h1>
-                    
+
+                    <h1 className="text-center text-xl font-semibold text-second">Form Penyewa</h1>
+
                     <div className=" px-4 pt-3 ">
                         <p className="font-semibold text-gray-400">Nama</p>
                         <input
@@ -86,7 +97,7 @@ export default function addSewa() {
                     </div>
 
                     <div className=" px-4">
-                        <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat</p>
+                        <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat </p>
                         <input
                             onChange={(e) => setKlg(e.target.value)}
                             value={klg}
@@ -115,15 +126,16 @@ export default function addSewa() {
                             className="input input-bordered w-64 max-w-xs" />
                     </div>
 
+            <div className="px-4 pb-3">
+                <p className="font-semibold text-gray-400">Tanggal Masuk</p>
 
-                    <div className="px-4 pb-3">
-                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                {isClient && (
                     <Datetime
                         renderInput={renderCustomInput}
                         onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
                         className="appearance-none border rounded py-3 px-2 text-gray-darker" />
-                    </div>
-
+                    )}
+            </div>
                     <button
                         type="submit"
                         className="btn btn-success text-white">
@@ -132,8 +144,6 @@ export default function addSewa() {
                 </form>
 
             </div>
-
-        </>
 
 
     );

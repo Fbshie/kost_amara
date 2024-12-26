@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function header() {
     return(
         <header>
-            <div className="container flex items-center justify-between mx-auto  px-2 py-4"> 
+            <div className="max-w-7xl mx-auto container flex items-center justify-between px-2 py-4"> 
                 
                 <div className="">
                     <Link href={'/'}>
@@ -13,7 +13,7 @@ export default function header() {
                 
                 <div >
                     <Link className="mr-6" href={'https://maps.app.goo.gl/mjGEiuxtC7jp6Hz79'}>Lokasi</Link>
-                    <Link className="rounded-xl border-2 p-2 gap-4 border-primary" href={'/infoKamar'} >Ketersedian kamar</Link>
+                    <Link className="rounded-xl border-2 p-2 gap-4 border-primary" href={'/infoKamar'} >Info kamar</Link>
                 </div>
                 
             </div>

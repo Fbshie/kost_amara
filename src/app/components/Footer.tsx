@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="bg-second">
              <hr  className="border-t-2 border-gray-600"/>
 
-        <div className="max-w-6xl mx-auto mt-2 grid grid-cols-1  md:grid-cols-3  gap-2 items-center">
+        <div className="max-w-7xl mx-auto mt-3 grid grid-cols-1  md:grid-cols-3  gap-2 items-center">
             
 
            <div className=" my-9 flex justify-center items-center">

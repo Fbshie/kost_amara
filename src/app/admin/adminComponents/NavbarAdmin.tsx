@@ -34,11 +34,11 @@ export default function NavbarAdmin() {
                             <li><a href="./" className="text-primary">Home</a></li>
                             <li>
                                 <details>
-                                    <summary className="text-primary">Nav</summary>
+                                    <summary className="text-primary">Navigasi</summary>
                                     <ul className="bg-second rounded-t-none p-2 ">
                                         <li><Link href={"/admin"}>Penyewa</Link></li>
-                                        <li><Link href={"/laporPage"}>Keluhan</Link></li>
-                                        <li><Link href={"/kamarPage"}>Isi Kamar</Link></li>
+                                        <li><Link href={"/laporPageAdmin"}>Keluhan</Link></li>
+                                        <li><Link href={"/kamarPageAdmin"}>Isi Kamar</Link></li>
                                     </ul>
                                 </details>
                             </li>

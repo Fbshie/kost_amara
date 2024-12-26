@@ -23,13 +23,13 @@ const getSewaById = async (id: string) => {
 export default async function editSewa({ params }: { params: { id?: string } })  {
     const id = params.id ?? 'default-id';
     const { sewa } = await getSewaById(id);
-    const { nama,hp,klg,ktp,kamar } = sewa;
+    const { nama,hp,klg,ktp,kamar,tanggal } = sewa;
 
     return (
     <>
         
         <NavbarAdmin />
-        <EditSewaForm id={id} nama={nama} hp={hp} klg={klg} ktp={ktp} kamar={kamar} />
+        <EditSewaForm id={id} nama={nama} hp={hp} klg={klg} ktp={ktp} kamar={kamar} tanggal={tanggal} />
     </>
     );
 }

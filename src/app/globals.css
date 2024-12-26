@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,7 +9,11 @@
   --second: #2C2C2C;
 }
 
-
+@layer base {
+  html {
+    font-family: Libre Franklin, sans-serif;
+  }
+}
 
 header {
   background-color: var(--second);

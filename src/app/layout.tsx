@@ -3,14 +3,14 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 
-const franklin = localFont({
-  src: "./fonts/LibreFranklin-VariableFont_wght.ttf",
+const libre = localFont({
+  src: "./fonts/LibreFranklin-Regular.otf",
   variable: "--font-franklin",
   weight: "100 900",
 });
-const franklin_light = localFont({
-  src: "./fonts/LibreFranklin-Light.ttf",
-  variable: "--font-franklin-light",
+const libre_sb = localFont({
+  src: "./fonts/LibreFranklin-SemiBold.otf",
+  variable: "--font-sb",
   weight: "100 900",
 });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${franklin.variable} ${franklin_light.variable} antialiased`}>
+      <body className={`${libre.variable} font-franklin antialiased`}>
        
        
         {children}

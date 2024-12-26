@@ -1,6 +1,8 @@
 "use client"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
 
 interface EditSewaFormProps {
     id: string;
@@ -9,14 +11,22 @@ interface EditSewaFormProps {
     klg: string;
     ktp: string;
     kamar: number;
+    tanggal : string;
 }
 
-export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar }: EditSewaFormProps) {
+const renderCustomInput = (props: any, openCalendar: any) => (
+    <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-darker">
+        {props.value || "Pilih tanggal"} { }
+    </div>
+);
+
+export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }: EditSewaFormProps) {
     const [newNama, setNewNama] = useState(nama);
     const [newHp, setNewHp] = useState(hp);
     const [newKlg, setNewKlg] = useState(klg);
     const [newKtp, setNewKtp] = useState(ktp);
     const [newKamar, setNewKamar] = useState(kamar);
+    const [newTanggal, setNewTanggal] = useState(tanggal);
 
     const router = useRouter();
 
@@ -29,7 +39,7 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar }: EditSewa
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ newNama, newHp, newKlg, newKtp, newKamar }),
+                body: JSON.stringify({ newNama, newHp, newKlg, newKtp, newKamar, newTanggal }),
             });
 
             if (!res.ok) {
@@ -85,6 +95,11 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar }: EditSewa
                         value={newKamar}
                         type="text"
                         className="input input-bordered input-warning w-full max-w-xs" />
+
+                    <Datetime
+                        renderInput={renderCustomInput}
+                        onChange={(value) => setNewTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
+                        className="appearance-none border rounded py-3 px-2 text-gray-darker" />
 
                     <button
                         className="btn btn-success text-white">

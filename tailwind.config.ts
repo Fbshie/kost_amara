@@ -14,6 +14,9 @@ const config: Config = {
         second: '#2C2C2C',
         third: '#D9D9D9',
       },
+      fontFamily: {
+        libre: "var(--font-franklin)"
+      }
     },
   },
 

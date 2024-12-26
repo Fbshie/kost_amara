@@ -9,7 +9,7 @@ export default function laporPage() {
     return (
         <>
         <NavbarAdmin/>
-        Halaman Laporan
+            <div className="text-center font-bold my-10">Tabel Laporan</div>
         <TableLapor />
         </>
     )
