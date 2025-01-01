@@ -30,7 +30,7 @@ export default function EditKamarForm({ id, jumlah }: EditKamarFormProps) {
             }
 
             router.refresh();
-            router.push("/kamarPage");
+            router.push("/kamarPageAdmin");
         } catch (error) {
             console.log(error);
         }

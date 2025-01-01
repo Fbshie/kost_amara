@@ -29,7 +29,7 @@ export default function infoKamar() {
             <Navbar />
             {data.kamar.map((rs: any, index: number) => (
 
-                <div className="font-bold text-center my-32  md:my-60 text-second mx-8 "
+                <div className="font-bold text-center my-32  md:my-72 text-second mx-8 "
                     key={rs.id || index}>
                     {rs.jumlah > 0 ? (
                         <>
@@ -45,7 +45,11 @@ export default function infoKamar() {
                         </>
                     )
 
-                        : "Untuk sekarang Kamar tidak tersedia"}
+                        : ( <>
+                            <div className="text-x md:text-xl ">Untuk sekarang Kamar tidak tersedia</div>
+                        </>
+                            
+                        )}
                 </div>
 
             ))}

@@ -32,6 +32,7 @@ export default function addLapor() {
 
             if (res.ok) {
                 router.push("/");
+                alert("Terima Kasih sudah mengisi Form Laporan");
             } else {
                 throw new Error("Gagal menambahkan data");
             }
@@ -50,7 +51,7 @@ export default function addLapor() {
         <>
            <Navbar />
 
-            <div className="flex justify-center my-28">
+            <div className="flex justify-center my-36">
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
                     <h1 className="text-center text-xl font-semibold text-second">Isi keluhan anda</h1>
