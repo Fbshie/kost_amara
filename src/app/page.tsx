@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import List from "./components/List";
@@ -15,6 +14,5 @@ export default function Home() {
       <Loc />
       <Footer />
     </>
-   
   );
 }

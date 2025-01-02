@@ -29,13 +29,13 @@ export default function infoKamar() {
             <Navbar />
             {data.kamar.map((rs: any, index: number) => (
 
-                <div className="font-bold text-center my-32  md:my-72 text-second mx-8 "
+                <div className="font-bold text-center my-24  md:my-72 text-second md:text-lg mx-8 "
                     key={rs.id || index}>
                     {rs.jumlah > 0 ? (
                         <>
-                            {`Kamar berjumlah ${rs.jumlah} Hubungi WhatsApp Kami Jika anda berminat`} <br />
+                            <p>Kamar yang tersedia sekarang berjumlah {rs.jumlah} Hubungi WhatsApp Kami Jika anda berminat. </p> <br />
 
-                            <div className="flex items-center justify-center mt-6">
+                            <div className="flex items-center justify-center mt-2">
                                 <Link href={'https://api.whatsapp.com/send/?phone=6289504100165&text&type=phone_number&app_absent=0&wame_ctl=1'}>
                                 <button className="bg-green-500 flex items-center px-5 py-3 rounded-md">
                                     <img className="size-9 mr-3" src="footer/footer2.png" alt="" /> <p className="text-white">Hubungi WhatsApp</p>

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function header() {
     return(
         <header>
-            <div className="max-w-7xl mx-auto container flex items-center justify-between px-2 py-4"> 
+            <div className="max-w-7xl mx-auto container flex items-center justify-between px-2 py-5 bg-second"> 
                 
                 <div className="">
                     <Link href={'/'}>
