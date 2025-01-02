@@ -11,6 +11,7 @@ export default function Loc() {
                     <a className="text-white text-center cursor-pointer " href="https://maps.app.goo.gl/mjGEiuxtC7jp6Hz79">Cek Lokasi detail (Klik) </a>
                 </div>
             </div>
+            <hr  className="border-t-2 border-gray-600"/>
         </div>
     );
 }
