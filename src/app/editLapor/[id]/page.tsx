@@ -4,7 +4,7 @@ import EditLaporForm from "@/app/admin/editComponents/EditLaporForm";
 
 const getLaporById = async (id: string) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/lapor/${id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lapor/${id}`,{
             cache: "no-store",
         });
 

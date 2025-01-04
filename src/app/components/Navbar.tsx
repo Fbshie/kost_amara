@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
@@ -7,7 +8,7 @@ export default function Navbar() {
                 
                 <div className="">
                     <Link href={'/'}>
-                    <img src="logo3.png" alt="" />
+                    <Image width={110} height={110} src="/logo3.png" alt="" />
                     </Link>
                 </div>
                 

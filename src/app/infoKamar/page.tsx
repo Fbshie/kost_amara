@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 const fetcher = async (url: string) => {
     const res = await fetch(url, { cache: "no-store" });
@@ -46,7 +47,7 @@ export default function InfoKamar() {
                             <div className="flex items-center justify-center">
                                 <Link href={'https://api.whatsapp.com/send/?phone=6289504100165&text&type=phone_number&app_absent=0&wame_ctl=1'}>
                                 <button className="bg-green-500 flex items-center px-5 py-3 rounded-md">
-                                    <img className="size-9 mr-3" src="footer/footer2.png" alt="" /> <p className="text-white">Hubungi WhatsApp</p>
+                                    <Image width={100} height={100} className="size-9 mr-3" src="/footer/footer2.png" alt="" /> <p className="text-white">Hubungi WhatsApp</p>
                                 </button>
                                 </Link>
                             </div>

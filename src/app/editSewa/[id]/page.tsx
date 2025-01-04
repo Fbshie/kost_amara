@@ -3,7 +3,7 @@ import EditSewaForm from "@/app/admin/editComponents/EditSewaForm";
 
 const getSewaById = async (id: string) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/sewa/${id}`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sewa/${id}`,{
             cache: "no-store",
         });
 
