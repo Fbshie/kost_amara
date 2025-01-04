@@ -3,7 +3,7 @@ import connectMongoDB from "../../../../../libs/mongodb";
 import Kamar from "../../../../../models/KamarModel";
 
 type UpdateKamarPayload = {
-    newJumlah: Number;
+    newJumlah: number;
   };
 
 export async function PUT(request: Request, {params}: {params: {id : string}} ) {

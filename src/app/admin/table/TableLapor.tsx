@@ -9,8 +9,19 @@ const fetcher = async (url: string) => {
   return res.json();
 };
 
+interface Lapor {
+  _id: string;
+  nama_lapor: string;
+  kamar_lapor: string;
+  isi_lapor: string;
+}
+
+interface ApiResponse {
+  lapor: Lapor[];
+}
+
 export default function TableLapor() {
-  const { data, error, isLoading } = useSWR("http://localhost:3000/api/lapor", fetcher);
+  const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/lapor", fetcher);
 
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -35,7 +46,7 @@ export default function TableLapor() {
           </thead>
       
           <tbody>
-              {data.lapor.map((rs: any) => (
+              {data?.lapor.map((rs) => (
                   <tr className="hover" key={rs._id}>
                       
 

@@ -8,11 +8,6 @@ const libre = localFont({
   variable: "--font-franklin",
   weight: "100 900",
 });
-const libre_sb = localFont({
-  src: "./fonts/LibreFranklin-SemiBold.otf",
-  variable: "--font-sb",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Kost Amara",
