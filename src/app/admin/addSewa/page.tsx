@@ -12,7 +12,7 @@ type InputProps = React.DetailedHTMLProps<
 >;
 
 type OpenCalendarType = { (): void };
-const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType, closeCalendar: OpenCalendarType) => (
+const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType) => (
     <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
         {props.value || "(Pilih tanggal)"} { }
     </div>
