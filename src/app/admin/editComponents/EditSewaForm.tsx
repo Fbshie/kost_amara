@@ -14,7 +14,13 @@ interface EditSewaFormProps {
     tanggal : string;
 }
 
-const renderCustomInput = (props: any, openCalendar: any) => (
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+type OpenCalendarType = { (): void };
+const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType, closeCalendar: OpenCalendarType) => (
     <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-darker">
         {props.value || "Pilih tanggal"} { }
     </div>

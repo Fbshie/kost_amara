@@ -10,7 +10,13 @@ const Datetime = dynamic(() => import("react-datetime"), {
     loading: () => <p>Loading...</p> // Fallback selama render klien
   });
 
-const renderCustomInput = (props: any, openCalendar: any) => (
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+type OpenCalendarType = { (): void };
+const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType, closeCalendar: OpenCalendarType) => (
     <div onClick={openCalendar} className="cursor-pointer border rounded py-2 text-gray-400 text-center">
         {props.value || "(Pilih tanggal)"} { }
     </div>

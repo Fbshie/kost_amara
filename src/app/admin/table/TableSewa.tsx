@@ -9,8 +9,22 @@ const fetcher = async (url: string) => {
   return res.json();
 };
 
+interface Sewa {
+  _id: string;
+  nama: string;
+  hp: string;
+  klg: string;
+  ktp: string;
+  kamar: number;
+  tanggal: string;
+}
+
+interface ApiResponse {
+  sewa: Sewa[];
+}
+
 export default function TableSewa() {
-  const { data, error, isLoading } = useSWR("http://localhost:3000/api/sewa", fetcher);
+  const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/sewa", fetcher);
 
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -38,7 +52,7 @@ export default function TableSewa() {
           </thead>
       
           <tbody>
-              {data.sewa.map((rs: any) => (
+              {data?.sewa.map((rs) => (
                   <tr className="hover" key={rs._id}>
                       
 

@@ -13,10 +13,18 @@ const fetcher = async (url: string) => {
     return res.json();
 };
 
+interface Kamar {
+    _id: string;
+    jumlah : number;
+  }
+  
+  interface ApiResponse {
+    kamar: Kamar[];
+  }
 
 export default function InfoKamar() {
 
-    const { data, error, isLoading } = useSWR("http://localhost:3000/api/kamar", fetcher);
+    const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/kamar", fetcher);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading data: {error.message}</div>;
@@ -27,10 +35,10 @@ export default function InfoKamar() {
     return (
         <>
             <Navbar />
-            {data.kamar.map((rs: any, index: number) => (
+            {data?.kamar.map((rs, index: number) => (
 
                 <div className="font-bold text-center my-24  md:my-72 text-second md:text-lg mx-8 "
-                    key={rs.id || index}>
+                    key={rs._id || index}>
                     {rs.jumlah > 0 ? (
                         <>
                             <p>Kamar yang tersedia sekarang berjumlah {rs.jumlah} Hubungi WhatsApp Kami Jika anda berminat. </p> <br />

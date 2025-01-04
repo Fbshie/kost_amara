@@ -6,8 +6,13 @@ import NavbarAdmin from "../adminComponents/NavbarAdmin";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
-const renderCustomInput = (props: any, openCalendar: any) => (
+type OpenCalendarType = { (): void };
+const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType, closeCalendar: OpenCalendarType) => (
     <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
         {props.value || "(Pilih tanggal)"} { }
     </div>

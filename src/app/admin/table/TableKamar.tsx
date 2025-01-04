@@ -9,8 +9,17 @@ const fetcher = async (url: string) => {
   return res.json();
 };
 
+interface Kamar {
+  _id: string;
+  jumlah : number;
+}
+
+interface ApiResponse {
+  kamar: Kamar[];
+}
+
 export default function TableKamar() {
-  const { data, error, isLoading } = useSWR("http://localhost:3000/api/kamar", fetcher);
+  const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/kamar", fetcher);
 
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
@@ -31,7 +40,7 @@ export default function TableKamar() {
           </thead>
 
           <tbody>
-            {data.kamar.map((rs: any) => (
+            {data?.kamar.map((rs) => (
               <tr className="hover" key={rs._id}>
                 <td> {rs.jumlah}</td>
                 <th>
