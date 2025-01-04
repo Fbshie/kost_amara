@@ -17,7 +17,7 @@ const getKamarById = async (id: string) => {
     }
 };
 
-export default async function editKamar({ params }: { params: { id?: string } }) {
+export default async function editKamar({ params }: { params: { id: string } }) {
     const id = params.id ?? 'default-id';
     const { kamar } = await getKamarById(id);
     const { jumlah } = kamar;
