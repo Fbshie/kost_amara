@@ -54,7 +54,7 @@ export default function TableLapor() {
                           <td> {rs.kamar_lapor}</td>
                           <td> {rs.isi_lapor}</td>
                           <th>
-                             <a href={`admin/editLapor/${rs._id}`}>
+                             <a href={`editLapor/${rs._id}`}>
                             <button className="btn btn-info">Edit</button>
                             </a>
                             

@@ -1,5 +1,5 @@
-import NavbarAdmin from "../../adminComponents/NavbarAdmin";
-import EditSewaForm from "../../editComponents/EditSewaForm";
+import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
+import EditSewaForm from "@/app/admin/editComponents/EditSewaForm";
 
 const getSewaById = async (id: string) => {
     try {

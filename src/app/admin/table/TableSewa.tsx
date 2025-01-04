@@ -63,7 +63,7 @@ export default function TableSewa() {
                           <td> {rs.kamar}</td>
                           <td> {rs.tanggal} </td>
                           <th>
-                            <a href={`admin/editSewa/${rs._id}`}>
+                            <a href={`editSewa/${rs._id}`}>
                             <button className="btn btn-info">Edit</button>
                             </a>
                             

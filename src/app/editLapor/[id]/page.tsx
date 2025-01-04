@@ -1,5 +1,6 @@
-import NavbarAdmin from "../../adminComponents/NavbarAdmin";
-import EditLaporForm from "../../editComponents/EditLaporForm";
+import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
+import EditLaporForm from "@/app/admin/editComponents/EditLaporForm";
+
 
 const getLaporById = async (id: string) => {
     try {
