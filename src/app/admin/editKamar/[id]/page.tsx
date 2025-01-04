@@ -11,6 +11,7 @@ const getKamarById = async (id: string) => {
             throw new Error("Failed to fetch data Kamar")
         }
 
+        
         return res.json();
     } catch (error) {
         console.log(error);
