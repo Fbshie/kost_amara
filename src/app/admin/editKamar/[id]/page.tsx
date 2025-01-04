@@ -3,7 +3,7 @@ import EditKamarForm from "../../editComponents/EditKamarForm";
 
 const getKamarById = async (id: string) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/kamar/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar/${id}`, {
             cache: "no-store",
         });
 
@@ -17,17 +17,14 @@ const getKamarById = async (id: string) => {
     }
 };
 
-type EditKamarProps = {
-    params: { id: string };
-};
-
-export default async function editKamar({ params }: EditKamarProps) {
+export default async function editKamar({ params }: { params: { id?: string } }) {
     const id = params.id ?? 'default-id';
     const { kamar } = await getKamarById(id);
-    const { jumlah } = kamar?.jumlah || 0;
+    const { jumlah } = kamar;
 
     return (
         <>
+
             <NavbarAdmin />
             <EditKamarForm id={id} jumlah={jumlah} />
         </>
