@@ -3,7 +3,7 @@ import EditKamarForm from "../../editComponents/EditKamarForm";
 
 const getKamarById = async (id: string) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/kamar/${id}`,{
+        const res = await fetch(`http://localhost:3000/api/kamar/${id}`, {
             cache: "no-store",
         });
 
@@ -11,22 +11,22 @@ const getKamarById = async (id: string) => {
             throw new Error("Failed to fetch data Kamar")
         }
 
-            return res.json();
+        return res.json();
     } catch (error) {
         console.log(error);
     }
 };
 
-export default async function editKamar({ params }: { params: { id?: string } })  {
+export default async function editKamar({ params }: { params: { id?: string } }) {
     const id = params.id ?? 'default-id';
     const { kamar } = await getKamarById(id);
     const { jumlah } = kamar;
 
     return (
-    <>
-        
-        <NavbarAdmin />
-        <EditKamarForm id={id} jumlah={jumlah} />
-    </>
+        <>
+
+            <NavbarAdmin />
+            <EditKamarForm id={id} jumlah={jumlah} />
+        </>
     );
 }

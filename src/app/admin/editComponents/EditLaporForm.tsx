@@ -33,7 +33,7 @@ export default function EditLaporForm({ id, nama_lapor, kamar_lapor, isi_lapor }
             }
 
             router.refresh();
-            router.push("/admin/laporPage");
+            router.push("/laporPageAdmin");
         } catch (error) {
             console.log(error);
         }

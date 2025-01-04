@@ -4,8 +4,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 
-import Cookies from "js-cookie";
-
 export default function LoginPage() {
 
     const [username, setUsername] = useState('');

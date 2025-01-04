@@ -19,7 +19,7 @@ export default function Footer() {
                 <h1 className="text-xl font-semibold text-primary ">SOCIAL MEDIA</h1> 
                     <div className="flex p-1 items-center justify-center mt-2">
                         <img className="size-9" src="footer/footer1.png" alt="" />
-                        <a className="text-primary ml-2" href=""> amara_kostputri.ptk</a>
+                        <a className="text-primary ml-2" href="https://www.instagram.com/amara_kostputri.ptk/profilecard/?igsh=MWhraDVmODV3ejJ1aA=="> amara_kostputri.ptk</a>
                     </div>
 
                     <div className="flex p-1 items-center justify-center">

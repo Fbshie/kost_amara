@@ -4,16 +4,12 @@ import Footer from "../components/Footer";
 import AddFormSewa from "../components/AddFormSewa";
 
 export default function addSewaGuest() {
-
     return (
-
         <>
             <Navbar />
             <AddFormSewa />
             <Footer />
 
         </>
-
-
     );
 }

@@ -35,7 +35,7 @@ export default function infoKamar() {
                         <>
                             <p>Kamar yang tersedia sekarang berjumlah {rs.jumlah} Hubungi WhatsApp Kami Jika anda berminat. </p> <br />
 
-                            <div className="flex items-center justify-center mt-2">
+                            <div className="flex items-center justify-center">
                                 <Link href={'https://api.whatsapp.com/send/?phone=6289504100165&text&type=phone_number&app_absent=0&wame_ctl=1'}>
                                 <button className="bg-green-500 flex items-center px-5 py-3 rounded-md">
                                     <img className="size-9 mr-3" src="footer/footer2.png" alt="" /> <p className="text-white">Hubungi WhatsApp</p>
