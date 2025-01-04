@@ -4,7 +4,7 @@ import NavbarAdmin from "../admin/adminComponents/NavbarAdmin"
 import TableKamar from "../admin/table/TableKamar"
 
 
-export default function kamarPage() {
+export default function KamarPage() {
     return (
         <>
         <NavbarAdmin />

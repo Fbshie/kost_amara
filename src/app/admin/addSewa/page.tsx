@@ -13,7 +13,7 @@ const renderCustomInput = (props: any, openCalendar: any) => (
     </div>
 );
 
-export default function addSewa() {
+export default function AddSewa() {
 
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");

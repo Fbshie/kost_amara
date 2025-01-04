@@ -5,7 +5,7 @@ import TableLapor from "../admin/table/TableLapor"
 
 
 
-export default function laporPage() {
+export default function LaporPage() {
     return (
         <>
         <NavbarAdmin/>

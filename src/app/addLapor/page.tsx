@@ -1,13 +1,13 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 
 
-export default function addLapor() {
+export default function AddLapor() {
 
     const [nama_lapor, setNama] = useState("");
     const [kamar_lapor, setHp] = useState("");

@@ -6,7 +6,7 @@ import NavbarAdmin from "../adminComponents/NavbarAdmin";
 
 
 
-export default function addKamar() {
+export default function AddKamar() {
 
     const [jumlah, setJumlah] = useState("");
     

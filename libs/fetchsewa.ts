@@ -1,4 +1,4 @@
-export const fetchSewa = async () => {
+export const FetchSewa = async () => {
     try {
         const res = await fetch("http://localhost:3000/api/sewa", {
             cache: "no-store",

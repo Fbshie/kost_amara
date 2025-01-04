@@ -14,7 +14,7 @@ const fetcher = async (url: string) => {
 };
 
 
-export default function infoKamar() {
+export default function InfoKamar() {
 
     const { data, error, isLoading } = useSWR("http://localhost:3000/api/kamar", fetcher);
 

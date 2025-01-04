@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AddFormSewa from "../components/AddFormSewa";
 
-export default function addSewaGuest() {
+export default function AddSewaGuest() {
     return (
         <>
             <Navbar />
