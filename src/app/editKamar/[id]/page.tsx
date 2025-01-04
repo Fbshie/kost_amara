@@ -1,5 +1,7 @@
-import NavbarAdmin from "../../adminComponents/NavbarAdmin";
-import EditKamarForm from "../../editComponents/EditKamarForm";
+import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
+import EditKamarForm from "@/app/admin/editComponents/EditKamarForm";
+
+
 
 const getKamarById = async (id: string) => {
     try {

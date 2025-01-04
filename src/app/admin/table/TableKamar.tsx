@@ -44,7 +44,7 @@ export default function TableKamar() {
               <tr className="hover" key={rs._id}>
                 <td> {rs.jumlah}</td>
                 <th>
-                  <a href={`admin/editKamar/${rs._id}`}>
+                  <a href={`editKamar/${rs._id}`}>
                     <button className="btn btn-info">Edit</button>
                   </a>
 
