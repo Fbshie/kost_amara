@@ -1,7 +1,7 @@
 import NavbarAdmin from "../../adminComponents/NavbarAdmin";
 import EditKamarForm from "../../editComponents/EditKamarForm";
 
-const getKamarById = async (id: string) => {
+const getKamarById = async (id: string): Promise<{ kamar: { jumlah: number } }> => {
     try {
         const res = await fetch(`http://localhost:3000/api/kamar/${id}`, {
             cache: "no-store",
@@ -14,6 +14,7 @@ const getKamarById = async (id: string) => {
         return res.json();
     } catch (error) {
         console.log(error);
+        return { kamar: { jumlah: 0 } }; 
     }
 };
 
