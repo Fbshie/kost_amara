@@ -17,14 +17,17 @@ const getKamarById = async (id: string) => {
     }
 };
 
-export default async function editKamar({ params }: { params: { id?: string } }) {
+type EditKamarProps = {
+    params: { id: string };
+};
+
+export default async function editKamar({ params }: EditKamarProps) {
     const id = params.id ?? 'default-id';
     const { kamar } = await getKamarById(id);
-    const { jumlah } = kamar;
+    const { jumlah } = kamar?.jumlah || 0;
 
     return (
         <>
-
             <NavbarAdmin />
             <EditKamarForm id={id} jumlah={jumlah} />
         </>
