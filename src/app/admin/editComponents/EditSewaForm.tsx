@@ -40,7 +40,7 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }:
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/sewa/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sewa/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"

@@ -8,7 +8,7 @@ export default function DeleteLapor({ id }: {id : string}) {
         const confirmed = confirm("Anda yakin ingin menghapus data?");
 
         if (confirmed) {
-            const res = await fetch(`http://localhost:3000/api/lapor?id=${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lapor?id=${id}`, {
                 method: "DELETE",
             });
 

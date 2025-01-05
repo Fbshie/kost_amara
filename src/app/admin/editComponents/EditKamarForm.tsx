@@ -17,7 +17,7 @@ export default function EditKamarForm({ id, jumlah }: EditKamarFormProps) {
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/kamar/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"

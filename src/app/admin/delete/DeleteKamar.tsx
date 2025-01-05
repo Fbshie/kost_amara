@@ -8,7 +8,7 @@ export default function DeleteKamar({ id }: {id : string}) {
         const confirmed = confirm("Anda yakin ingin menghapus data jumlah kamar?");
 
         if (confirmed) {
-            const res = await fetch(`http://localhost:3000/api/kamar?id=${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar?id=${id}`, {
                 method: "DELETE",
             });
 
