@@ -6,12 +6,8 @@ type UpdateKamarPayload = {
     newJumlah: number;
   };
   
-  type Context = {
-    params: { id: string };
-  };
-  
-  export async function PUT(request: NextRequest, context: Context) {
-    const { id } = context.params;
+  export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+    const { id } = params;
   
     const body: UpdateKamarPayload = await request.json();
     const { newJumlah: jumlah } = body;
@@ -22,8 +18,8 @@ type UpdateKamarPayload = {
     return NextResponse.json({ message: "Data Kamar Updated" }, { status: 200 });
   }
   
-  export async function GET(_: NextRequest, context: Context) {
-    const { id } = context.params;
+  export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+    const { id } = params;
   
     await connectMongoDB();
     const kamar = await Kamar.findById(id);
