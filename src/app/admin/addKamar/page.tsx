@@ -19,7 +19,7 @@ export default function AddKamar() {
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/kamar",{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar`,{
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

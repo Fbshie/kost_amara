@@ -20,7 +20,7 @@ export default function EditLaporForm({ id, nama_lapor, kamar_lapor, isi_lapor }
         e.preventDefault();
 
         try {
-            const res = await fetch(`http://localhost:3000/api/lapor/${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/lapor/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-type": "application/json"

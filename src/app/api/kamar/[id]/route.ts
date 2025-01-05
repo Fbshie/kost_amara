@@ -6,19 +6,23 @@ type UpdateKamarPayload = {
     newJumlah: number;
   };
 
-export async function PUT(request: Request, {params}: {params: {id : string}} ) {
-    const { id } = params;
-
+  export async function PUT(request: Request, context: { params: { id: string } }) {
+    const { id } = context.params;
+  
     const body: UpdateKamarPayload = await request.json();
-    const { newJumlah:jumlah} = body;
+    const { newJumlah: jumlah } = body;
+  
     await connectMongoDB();
-    await Kamar.findByIdAndUpdate(id, {jumlah});
-    return NextResponse.json ({ message: "Data Kamar Updated" }, { status: 200 });
-}
+    await Kamar.findByIdAndUpdate(id, { jumlah });
+  
+    return NextResponse.json({ message: "Data Kamar Updated" }, { status: 200 });
+  }
 
-export async function GET(request : Request, {params}: {params: {id : string} } ) {
-    const { id } = params;
+  export async function GET(context: { params: { id: string } }) {
+    const { id } = context.params;
+  
     await connectMongoDB();
-    const kamar = await Kamar.findOne({ _id: id });
-    return NextResponse.json({ kamar }, {status: 200});
-}
+    const kamar = await Kamar.findById(id);
+  
+    return NextResponse.json({ kamar }, { status: 200 });
+  }

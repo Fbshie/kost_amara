@@ -25,7 +25,7 @@ interface Kamar {
 
 export default function InfoKamar() {
 
-    const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/kamar", fetcher);
+    const { data, error, isLoading } = useSWR<ApiResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar`, fetcher);
 
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error loading data: {error.message}</div>;

@@ -1,6 +1,6 @@
 export const FetchSewa = async () => {
     try {
-        const res = await fetch("http://localhost:3000/api/sewa", {
+        const res = await fetch("${process.env.NEXT_PUBLIC_API_URL}/api/sewa", {
             cache: "no-store",
         });
         if (!res.ok) {

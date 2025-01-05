@@ -21,7 +21,7 @@ interface ApiResponse {
 }
 
 export default function TableLapor() {
-  const { data, error, isLoading } = useSWR<ApiResponse>("http://localhost:3000/api/lapor", fetcher);
+  const { data, error, isLoading } = useSWR<ApiResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/lapor`, fetcher);
 
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;

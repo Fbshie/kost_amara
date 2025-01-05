@@ -8,7 +8,7 @@ export default function DeleteSewa({ id }: {id : string}) {
         const confirmed = confirm("Anda yakin ingin menghapus data?");
 
         if (confirmed) {
-            const res = await fetch(`http://localhost:3000/api/sewa?id=${id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sewa?id=${id}`, {
                 method: "DELETE",
             });
 
