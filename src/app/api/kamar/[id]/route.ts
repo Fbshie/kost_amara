@@ -1,12 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import connectMongoDB from "../../../../../libs/mongodb";
 import Kamar from "../../../../../models/KamarModel";
 
 type UpdateKamarPayload = {
     newJumlah: number;
   };
-
-  export async function PUT(request: Request, context: { params: { id: string } }) {
+  
+  type Context = {
+    params: { id: string };
+  };
+  
+  export async function PUT(request: NextRequest, context: Context) {
     const { id } = context.params;
   
     const body: UpdateKamarPayload = await request.json();
@@ -17,8 +21,8 @@ type UpdateKamarPayload = {
   
     return NextResponse.json({ message: "Data Kamar Updated" }, { status: 200 });
   }
-
-  export async function GET(_: Request, context: { params: { id: string } }) {
+  
+  export async function GET(_: NextRequest, context: Context) {
     const { id } = context.params;
   
     await connectMongoDB();
