@@ -6,21 +6,19 @@ import NavbarAdmin from "../adminComponents/NavbarAdmin";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
+type RenderInputProps = {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
-type OpenCalendarType = { (): void };
-const renderCustomInput = (
-    props: any,
-    openCalendar: Function,
-    // closeCalendar: Function
-) => (
-    <div onClick={() => openCalendar()} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
-        {props.value || "(Pilih tanggal)"} { }
-    </div>
-);
+
+
+// type OpenCalendarType = { (): void };
+// const renderCustomInput = (props: RenderInputProps, openCalendar: ()=> void, closeCalendar: ()=> void ) => (
+//     <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
+//         {props.value || "(Pilih tanggal)"} { }
+//     </div>
+// );
 
 export default function AddSewa() {
 
@@ -73,7 +71,7 @@ export default function AddSewa() {
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
                     <h1 className="text-center text-xl font-semibold text-second">Tambah Penyewa</h1>
-                    
+
                     <div className=" px-4 pt-3 ">
                         <p className="font-semibold text-gray-400">Nama</p>
                         <input
@@ -125,13 +123,21 @@ export default function AddSewa() {
                     </div>
 
 
-                    <div className="px-4 pb-3">
+                    {/* <div className="px-4 pb-3">
                         <p className="font-semibold text-gray-400">Tanggal Masuk</p>
-                    <Datetime
-                        renderInput={renderCustomInput} //baris yang error
-                        onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
-                        className="appearance-none border rounded py-3 px-2 text-gray-darker" />
-                    </div>
+                        <Datetime
+
+                            onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
+                            className="appearance-none border rounded py-3 px-2 text-gray-darker" />
+                    </div> */}
+
+                <div className="px-10 pb-3">
+                    <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                    <input type="datetime-local"
+                        placeholder="Tanggal masuk"
+                        onChange={(e) => setTanggal(e.target.value)}
+                        className="appearance-none border rounded py-3 px-2 text-gray-darker"/>
+                </div>
 
                     <button
                         type="submit"
