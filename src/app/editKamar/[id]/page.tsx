@@ -13,16 +13,20 @@ const getKamarById = async (id: string): Promise<{ kamar: { jumlah: number } }> 
             throw new Error("Failed to fetch data Kamar");
         }
 
-        return res.json();
+        return await res.json(); // Pastikan menunggu hasil JSON
     } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
     }
 };
 
-export default async function editKamar({ params }: { params: { id: string } }) {
+interface EditKamarProps {
+    params: { id: string };
+}
+
+export default async function editKamar({ params }: EditKamarProps) {
     try {
-        const id = params.id || "default-id"; // Default fallback ID
+        const id = params.id || "default-id";
         const data = await getKamarById(id);
 
         if (!data) {
