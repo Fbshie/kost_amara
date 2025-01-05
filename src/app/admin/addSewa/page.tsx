@@ -3,15 +3,14 @@
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import NavbarAdmin from "../adminComponents/NavbarAdmin";
-import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
-type RenderInputProps = {
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+const formatTanggal = (value: string): string => {
+    if (!value) return "";
+    const [datePart] = value.split("T");
+    const [year, month, day] = datePart.split("-");
+    return `${day}-${month}-${year}`;
 };
-
-
 
 // type OpenCalendarType = { (): void };
 // const renderCustomInput = (props: RenderInputProps, openCalendar: ()=> void, closeCalendar: ()=> void ) => (
@@ -131,13 +130,17 @@ export default function AddSewa() {
                             className="appearance-none border rounded py-3 px-2 text-gray-darker" />
                     </div> */}
 
-                <div className="px-10 pb-3">
-                    <p className="font-semibold text-gray-400">Tanggal Masuk</p>
-                    <input type="datetime-local"
-                        placeholder="Tanggal masuk"
-                        onChange={(e) => setTanggal(e.target.value)}
-                        className="appearance-none border rounded py-3 px-2 text-gray-darker"/>
-                </div>
+                    <div className="px-4 pb-3">
+                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                        <input type="datetime-local"
+                            onChange={(e) => {
+                                const rawValue = e.target.value;
+                                const formattedValue = formatTanggal(rawValue);
+                                setTanggal(formattedValue);
+                            }}
+                            placeholder="dd-mm-yyyy"
+                            className="appearance-none border rounded py-3 px-7 text-gray-darker" />
+                    </div>
 
                     <button
                         type="submit"
