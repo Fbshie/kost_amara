@@ -1,4 +1,4 @@
-/* eslint-disbale no-unused-vars */
+/* eslint-disbale */
 
 import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
 import EditKamarForm from "@/app/admin/editComponents/EditKamarForm";
