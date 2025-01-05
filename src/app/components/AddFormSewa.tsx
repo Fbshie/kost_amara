@@ -5,6 +5,14 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import "react-datetime/css/react-datetime.css";
 
+const formatTanggal = (value: string): string => {
+    if (!value) return "";
+    const [datePart] = value.split("T");
+    const [year, month, day] = datePart.split("-");
+    return `${day}-${month}-${year}`;
+};
+
+
 const Datetime = dynamic(() => import("react-datetime"), { 
     ssr: false, 
     loading: () => <p>Loading...</p> // Fallback selama render klien
@@ -135,12 +143,19 @@ export default function AddFormSewa() {
             <div className="px-4 pb-3">
                 <p className="font-semibold text-gray-400">Tanggal Masuk</p>
 
-                {isClient && (
-                    <Datetime
-                        renderInput={renderCustomInput}
-                        onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
-                        className="appearance-none border rounded py-3 px-2 text-gray-darker" />
-                    )}
+                <div className="px-4 pb-3">
+                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                        <input type="datetime-local"
+                            onChange={(e) => {
+                                const rawValue = e.target.value;
+                                const formattedValue = formatTanggal(rawValue);
+                                setTanggal(formattedValue);
+                            }}
+                            placeholder="dd-mm-yyyy"
+                            className="appearance-none border rounded py-3 px-7 text-gray-darker" />
+                    </div>
+
+
             </div>
                     <button
                         type="submit"

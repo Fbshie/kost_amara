@@ -4,6 +4,14 @@ import { useState } from "react";
 import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 
+const formatTanggal = (value: string): string => {
+    if (!value) return "";
+    const [datePart] = value.split("T");
+    const [year, month, day] = datePart.split("-");
+    return `${day}-${month}-${year}`;
+};
+
+
 interface EditSewaFormProps {
     id: string;
     nama: string;
@@ -11,20 +19,8 @@ interface EditSewaFormProps {
     klg: string;
     ktp: string;
     kamar: number;
-    tanggal : string;
+    tanggal: string;
 }
-
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
-
-type OpenCalendarType = { (): void };
-const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType) => (
-    <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-darker">
-        {props.value || "Pilih tanggal"} { }
-    </div>
-);
 
 export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }: EditSewaFormProps) {
     const [newNama, setNewNama] = useState(nama);
@@ -102,10 +98,18 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }:
                         type="text"
                         className="input input-bordered input-warning w-full max-w-xs" />
 
-                    <Datetime
-                        renderInput={renderCustomInput}
-                        onChange={(value) => setNewTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
-                        className="appearance-none border rounded py-3 px-2 text-gray-darker" />
+                    <div className="px-4 pb-3">
+                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                        <input type="datetime-local"
+                            onChange={(e) => {
+                                const rawValue = e.target.value;
+                                const formattedValue = formatTanggal(rawValue);
+                                setNewTanggal(formattedValue);
+                            }}
+                            placeholder="dd-mm-yyyy"
+                            className="appearance-none border rounded py-3 px-7 text-gray-darker" />
+                    </div>
+
 
                     <button
                         className="btn btn-success text-white">

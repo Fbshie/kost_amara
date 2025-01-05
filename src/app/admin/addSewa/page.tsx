@@ -12,12 +12,6 @@ const formatTanggal = (value: string): string => {
     return `${day}-${month}-${year}`;
 };
 
-// type OpenCalendarType = { (): void };
-// const renderCustomInput = (props: RenderInputProps, openCalendar: ()=> void, closeCalendar: ()=> void ) => (
-//     <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
-//         {props.value || "(Pilih tanggal)"} { }
-//     </div>
-// );
 
 export default function AddSewa() {
 
@@ -120,15 +114,6 @@ export default function AddSewa() {
                             placeholder=""
                             className="input input-bordered w-64 max-w-xs" />
                     </div>
-
-
-                    {/* <div className="px-4 pb-3">
-                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
-                        <Datetime
-
-                            onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
-                            className="appearance-none border rounded py-3 px-2 text-gray-darker" />
-                    </div> */}
 
                     <div className="px-4 pb-3">
                         <p className="font-semibold text-gray-400">Tanggal Masuk</p>
