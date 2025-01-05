@@ -20,13 +20,9 @@ const getKamarById = async (id: string): Promise<{ kamar: { jumlah: number } }> 
     }
 };
 
-interface EditKamarProps {
-    params: { id: string };
-}
-
-export default async function editKamar({ params }: EditKamarProps) {
+export default async function editKamar({ params }: { params: { id: string } }) {
     try {
-        const id = params.id || "default-id";
+        const id = params.id || "default-id"; // Default fallback ID
         const data = await getKamarById(id);
 
         if (!data) {
