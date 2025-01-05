@@ -12,8 +12,12 @@ type InputProps = React.DetailedHTMLProps<
 >;
 
 type OpenCalendarType = { (): void };
-const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType) => (
-    <div onClick={openCalendar} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
+const renderCustomInput = (
+    props: any,
+    openCalendar: Function,
+    // closeCalendar: Function
+) => (
+    <div onClick={() => openCalendar()} className="cursor-pointer border rounded py-3 px-2 text-gray-400 text-center">
         {props.value || "(Pilih tanggal)"} { }
     </div>
 );
@@ -124,7 +128,7 @@ export default function AddSewa() {
                     <div className="px-4 pb-3">
                         <p className="font-semibold text-gray-400">Tanggal Masuk</p>
                     <Datetime
-                        renderInput={renderCustomInput}
+                        renderInput={renderCustomInput} //baris yang error
                         onChange={(value) => setTanggal(typeof value === 'string' ? value : value.format('DD-MM-YYYY'))}
                         className="appearance-none border rounded py-3 px-2 text-gray-darker" />
                     </div>
