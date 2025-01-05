@@ -18,7 +18,7 @@ type UpdateKamarPayload = {
     return NextResponse.json({ message: "Data Kamar Updated" }, { status: 200 });
   }
 
-  export async function GET(context: { params: { id: string } }) {
+  export async function GET(_: Request, context: { params: { id: string } }) {
     const { id } = context.params;
   
     await connectMongoDB();
