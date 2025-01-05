@@ -1,6 +1,5 @@
 "use client"
 
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import "react-datetime/css/react-datetime.css";
@@ -11,24 +10,6 @@ const formatTanggal = (value: string): string => {
     const [year, month, day] = datePart.split("-");
     return `${day}-${month}-${year}`;
 };
-
-
-const Datetime = dynamic(() => import("react-datetime"), { 
-    ssr: false, 
-    loading: () => <p>Loading...</p> // Fallback selama render klien
-  });
-
-type InputProps = React.DetailedHTMLProps<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->;
-
-type OpenCalendarType = { (): void };
-const renderCustomInput = (props: InputProps, openCalendar: OpenCalendarType) => (
-    <div onClick={openCalendar} className="cursor-pointer border rounded py-2 text-gray-400 text-center">
-        {props.value || "(Pilih tanggal)"} { }
-    </div>
-);
 
 export default function AddFormSewa() {
 
