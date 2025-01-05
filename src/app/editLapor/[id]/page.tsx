@@ -1,3 +1,5 @@
+/* disable-eslint */
+
 import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
 import EditLaporForm from "@/app/admin/editComponents/EditLaporForm";
 
@@ -18,16 +20,20 @@ const getLaporById = async (id: string) => {
     }
 };
 
-export default async function editLapor({ params }: { params: { id?: string } })  {
-    const id = params.id ?? 'default-id';
-    const { lapor } = await getLaporById(id);
+export default async function editLapor({ params }: { params: Promise<{ id?: string }>})  {
+    const {id} =  await params;
+
+
+    const laporId = id ?? "default-id";
+
+    const { lapor } = await getLaporById(laporId);
     const { nama_lapor, kamar_lapor, isi_lapor } = lapor;
 
     return (
     <>
         
         <NavbarAdmin />
-        <EditLaporForm id={id} nama_lapor={nama_lapor} kamar_lapor={kamar_lapor} isi_lapor={isi_lapor}/>
+        <EditLaporForm id={laporId} nama_lapor={nama_lapor} kamar_lapor={kamar_lapor} isi_lapor={isi_lapor}/>
     </>
     );
 }
