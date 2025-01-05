@@ -4,59 +4,47 @@ import Kamar from "../../../../models/KamarModel";
 
 export async function GET() {
     try {
-      await connectMongoDB();
-      const kamar = await Kamar.find();
-      return NextResponse.json({ kamar }, { status: 200 });
-    } catch (error) {
-      return NextResponse.json(
-        { error: "Failed to fetch data", details: error.message },
-        { status: 500 }
-      );
-    }
-  }
-
-  export async function POST(request: NextRequest) {
-    try {
-      const { jumlah }: { jumlah: number } = await request.json();
-      await connectMongoDB();
-      await Kamar.create({ jumlah });
-      return NextResponse.json(
-        { message: "Data added successfully" },
-        { status: 201 }
-      );
-    } catch (error) {
-      return NextResponse.json(
-        { error: "Failed to add data", details: error.message },
-        { status: 500 }
-      );
-    }
-  }
-
-  export async function DELETE(request: NextRequest) {
-    try {
-      const id = request.nextUrl.searchParams.get("id");
-      if (!id) {
+        await connectMongoDB();
+        const kamar = await Kamar.find();
+        return NextResponse.json({ kamar });
+    } catch (err) {
+        const error = err as Error; // Pastikan 'err' adalah instance dari Error
         return NextResponse.json(
-          { error: "ID parameter is required" },
-          { status: 400 }
+            { message: "Error fetching data", error: error.message },
+            { status: 500 }
         );
-      }
-      await connectMongoDB();
-      const deleted = await Kamar.findByIdAndDelete(id);
-      if (!deleted) {
-        return NextResponse.json(
-          { error: "Data not found" },
-          { status: 404 }
-        );
-      }
-      return NextResponse.json(
-        { message: "Data deleted successfully" },
-        { status: 200 }
-      );
-    } catch (error) {
-      return NextResponse.json(
-        { error: "Failed to delete data", details: error.message },
-        { status: 500 }
-      );
     }
-  }
+}
+
+export async function POST(request: NextRequest) {
+    try {
+        const { jumlah } = await request.json();
+        await connectMongoDB();
+        const newKamar = await Kamar.create({ jumlah });
+        return NextResponse.json({ message: "Data ditambahkan", data: newKamar }, { status: 201 });
+    } catch (err) {
+        const error = err as Error;
+        return NextResponse.json(
+            { message: "Error creating data", error: error.message },
+            { status: 500 }
+        );
+    }
+}
+
+export async function DELETE({ params }: { params: { id: string } }) {
+    try {
+        const { id } = params; // Extract ID from params
+        await connectMongoDB();
+        const deletedKamar = await Kamar.findByIdAndDelete(id);
+        if (!deletedKamar) {
+            return NextResponse.json({ message: "Data tidak ditemukan" }, { status: 404 });
+        }
+        return NextResponse.json({ message: "Data dihapus" }, { status: 200 });
+    } catch (err) {
+        const error = err as Error;
+        return NextResponse.json(
+            { message: "Error deleting data", error: error.message },
+            { status: 500 }
+        );
+    }
+}
