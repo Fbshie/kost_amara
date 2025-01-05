@@ -1,7 +1,7 @@
 import NavbarAdmin from "@/app/admin/adminComponents/NavbarAdmin";
 import EditKamarForm from "@/app/admin/editComponents/EditKamarForm";
 
-const getKamarById = async (id: string) => {
+const getKamarById = async (id: string): Promise<{ kamar: { jumlah: number } }> => {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/kamar/${id}`, {
             cache: "no-store",
@@ -14,7 +14,7 @@ const getKamarById = async (id: string) => {
         return res.json();
     } catch (error) {
         console.error("Error fetching data:", error);
-        return null;
+        throw error;
     }
 };
 
@@ -23,25 +23,34 @@ interface EditKamarProps {
 }
 
 export default async function editKamar({ params }: EditKamarProps) {
-    const id = params.id || "default-id";
-    const data = await getKamarById(id);
+    try {
+        const id = params.id || "default-id";
+        const data = await getKamarById(id);
 
-    if (!data) {
+        if (!data) {
+            return (
+                <>
+                    <NavbarAdmin />
+                    <p>Failed to load data for the selected room.</p>
+                </>
+            );
+        }
+
+        const { kamar } = data;
+        const { jumlah } = kamar;
+
         return (
             <>
                 <NavbarAdmin />
-                <p>Failed to load data for the selected room.</p>
+                <EditKamarForm id={id} jumlah={jumlah} />
+            </>
+        );
+    } catch (error) {
+        return (
+            <>
+                <NavbarAdmin />
+                <p>Error: Unable to load the room data. Please try again later.</p>
             </>
         );
     }
-
-    const { kamar } = data;
-    const { jumlah } = kamar;
-
-    return (
-        <>
-            <NavbarAdmin />
-            <EditKamarForm id={id} jumlah={jumlah} />
-        </>
-    );
 }
