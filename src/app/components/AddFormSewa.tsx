@@ -125,7 +125,6 @@ export default function AddFormSewa() {
                 <p className="font-semibold text-gray-400">Tanggal Masuk</p>
 
                 <div className="px-4 pb-3">
-                        <p className="font-semibold text-gray-400">Tanggal Masuk</p>
                         <input type="datetime-local"
                             onChange={(e) => {
                                 const rawValue = e.target.value;
