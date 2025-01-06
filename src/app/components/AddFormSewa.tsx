@@ -69,7 +69,7 @@ export default function AddFormSewa() {
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
 
-                    <h1 className="text-center text-xl font-semibold text-second">Form Penyewa</h1>
+                    <h1 className="text-center text-xl font-semibold text-second">Silahkan isi data anda</h1>
 
                     <div className=" px-4 pt-3 ">
                         <p className="font-semibold text-gray-400">Nama</p>
