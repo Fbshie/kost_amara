@@ -55,7 +55,7 @@ export default function InfoKamar() {
                     )
 
                         : ( <>
-                            <div className="text-x md:text-xl ">Untuk sekarang Kamar tidak tersedia.</div>
+                            <div className="text-x md:text-xl ">Untuk sekarang Kamar tidak tersedia. </div>
                         </>
                             
                         )}
