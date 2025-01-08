@@ -31,7 +31,6 @@ export default async function editKamar({ params }: { params: Promise<{ id?: str
 
     return (
         <>
-
             <NavbarAdmin />
             <EditKamarForm id={kamarId} jumlah={jumlah} />
         </>

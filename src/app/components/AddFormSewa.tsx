@@ -140,7 +140,7 @@ export default function AddFormSewa() {
                     <button
                         type="submit"
                         className="btn btn-success text-white">
-                        Tambah Data
+                        Kirim
                     </button>
                 </form>
 

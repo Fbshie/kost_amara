@@ -12,7 +12,6 @@ const formatTanggal = (value: string): string => {
     return `${day}-${month}-${year}`;
 };
 
-
 export default function AddSewa() {
 
     const [nama, setNama] = useState("");
@@ -21,8 +20,6 @@ export default function AddSewa() {
     const [ktp, setKtp] = useState("");
     const [kamar, setKamar] = useState("");
     const [tanggal, setTanggal] = useState("");
-
-
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -52,9 +49,6 @@ export default function AddSewa() {
     };
 
     const router = useRouter();
-
-
-
     return (
 
         <>

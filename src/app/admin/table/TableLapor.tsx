@@ -26,30 +26,23 @@ export default function TableLapor() {
   if (isLoading) return <div className="text-center text-green-500">Loading...</div>;
   if (error) return <div>Error loading data: {error.message}</div>;
 
-   
     return(
         <>
         {/* Tabel */}
         <div className="overflow-x-auto my-6">
         <table className="table table-zebra">
           {/* head */}
-      
           <thead>
             <tr>
-              
-              
               <th>Nama</th>
               <th>No. Kamar</th>
               <th>Isi Keluhan</th>
               <th></th>
             </tr>
           </thead>
-      
           <tbody>
               {data?.lapor.map((rs) => (
                   <tr className="hover" key={rs._id}>
-                      
-
                           <td> {rs.nama_lapor}</td>
                           <td> {rs.kamar_lapor}</td>
                           <td> {rs.isi_lapor}</td>
@@ -60,8 +53,7 @@ export default function TableLapor() {
                             
                             <DeleteLapor id={rs._id}/>
                           </th>
-                  </tr>
-              
+                  </tr>  
           ))}
           </tbody>
         </table>
