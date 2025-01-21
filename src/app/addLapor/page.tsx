@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -44,7 +44,9 @@ export default function AddLapor() {
 
     const router = useRouter();
 
-    
+    useEffect(()=> {
+        setNama(localStorage.getItem("nama")||"")
+    },[])
 
     return (
 

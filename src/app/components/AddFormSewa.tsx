@@ -11,7 +11,11 @@ const formatTanggal = (value: string): string => {
     return `${day}-${month}-${year}`;
 };
 
+
+
 export default function AddFormSewa() {
+
+    const [nomor_kamar,setNomorKamar] = useState([]); 
 
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");
@@ -23,8 +27,8 @@ export default function AddFormSewa() {
 
     const router = useRouter();
 
-    useEffect(() => {
-        setIsClient(true); // Menandakan bahwa ini sudah dijalankan di klien
+    useEffect(() =>{
+        setIsClient(true);
       }, []);
 
 
@@ -34,6 +38,8 @@ export default function AddFormSewa() {
             alert("Semua data Wajib di isi!");
             return;
         }
+
+        
 
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sewa`, {
@@ -45,6 +51,7 @@ export default function AddFormSewa() {
             });
 
             if (res.ok) {
+                localStorage.setItem("nama",nama)
                 router.push("/");
                 alert("Terima Kasih sudah mengisi Form");
             } else {
