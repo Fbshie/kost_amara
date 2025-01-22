@@ -5,6 +5,7 @@ const topicScema = new Schema(
         nama_lapor: {type: String, required: true},
         kamar_lapor: {type: String, required: true},
         isi_lapor: {type: String, required: true},
+        sewaId: { type: Schema.Types.ObjectId, ref: "Sewa" },
     },
     {
         timestamps: true,

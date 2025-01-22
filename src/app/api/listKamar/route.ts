@@ -1,17 +1,17 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import connectMongoDB from "../../../../libs/mongodb";
-import NomorKamar from "../../../../models/NomorKamarModel";
+import ListKamar from "../../../../models/ListKamarModel";
 
 export async function GET() {
     await connectMongoDB();
-    const nomorKamar = await NomorKamar.find();
-    return NextResponse.json({ nomorKamar });
+    const listKamar = await ListKamar.find();
+    return NextResponse.json({ listKamar });
 }
 
 export async function POST(request: Request) {
     const {nomor_kamar} = await request.json();
     await connectMongoDB();
-    await NomorKamar.create({ nomor_kamar });
+    await ListKamar.create({ nomor_kamar });
     return NextResponse.json({ message: "Data ditambahkan" }, { status: 201 });
 }
 

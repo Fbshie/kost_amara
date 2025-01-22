@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavbarAdmin from "../adminComponents/NavbarAdmin";
 import "react-datetime/css/react-datetime.css";
 
@@ -16,14 +16,32 @@ export default function AddSewa() {
 
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");
-    const [klg, setKlg] = useState("");
-    const [ktp, setKtp] = useState("");
+    const [keluarga, setKeluarga] = useState("");
+    const [durasi, setDurasi] = useState("");
+    const [durasiOptions, setDurasiOptions] = useState([]);
     const [kamar, setKamar] = useState("");
+    const [kamarOptions, setKamarOptions] = useState([]);
     const [tanggal, setTanggal] = useState("");
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+            setIsClient(true);
+    
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/waktuSewa`)
+                .then((res) => res.json())
+                .then((data) => setDurasiOptions(data.waktuSewa || []))
+                .catch((error) => console.error("Error fetching durasi options:", error));
+    
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/listKamar`)
+                .then((res) => res.json())
+                .then((data) => setKamarOptions(data.listKamar || []))
+                .catch((error) => console.error("Error fetching kamar options:", error));
+    
+        }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!nama || !hp || !kamar || !tanggal || !klg || !ktp || !kamar) {
+        if (!nama || !hp || !kamar || !tanggal || !keluarga || !durasi || !kamar) {
             alert("Semua data wajib di isi!");
             return;
         }
@@ -34,7 +52,7 @@ export default function AddSewa() {
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({ nama, hp, klg, ktp, kamar, tanggal }),
+                body: JSON.stringify({ nama, hp, keluarga, durasi, kamar, tanggal }),
             });
 
             if (res.ok) {
@@ -82,32 +100,51 @@ export default function AddSewa() {
                     <div className=" px-4">
                         <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat</p>
                         <input
-                            onChange={(e) => setKlg(e.target.value)}
-                            value={klg}
+                            onChange={(e) => setKeluarga(e.target.value)}
+                            value={keluarga}
                             type="text"
                             placeholder=""
                             className="input input-bordered w-64 max-w-xs" />
                     </div>
 
-                    <div className=" px-4 ">
-                        <p className="font-semibold text-gray-400">No. Ktp </p>
-                        <input
-                            onChange={(e) => setKtp(e.target.value)}
-                            value={ktp}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs" />
-                    </div>
+                    
+                    <div className="px-4">
+                    <p className="font-semibold text-gray-400">Durasi</p>
+                    <select
+                        onChange={(e) => setDurasi(e.target.value)}
+                        value={durasi}
+                        className="input input-bordered w-64 max-w-xs"
+                    >
+                        <option value="" disabled>
+                            Pilih Durasi
+                        </option>
+                        {durasiOptions.map((option: any) => (
+                            <option key={option._id} value={option._id}>
+                                {option.durasi_sewa_kamar}
+                            </option>
+                        ))}
+                    </select>
 
-                    <div className=" px-4 ">
-                        <p className="font-semibold text-gray-400">No. Kamar</p>
-                        <input
-                            onChange={(e) => setKamar(e.target.value)}
-                            value={kamar}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs" />
-                    </div>
+                </div>
+
+                <div className="px-4">
+                    <p className="font-semibold text-gray-400">Nomor Kamar</p>
+                    <select
+                        onChange={(e) => setKamar(e.target.value)}
+                        value={kamar}
+                        className="input input-bordered w-64 max-w-xs"
+                    >
+                        <option value="" disabled>
+                            Pilih Nomor Kamar
+                        </option>
+                        {kamarOptions.map((option: any) => (
+                            <option key={option._id} value={option._id}>
+                                {option.nomor_kamar}
+                            </option>
+                        ))}
+                    </select>
+
+                </div>
 
                     <div className="px-4 pb-3">
                         <p className="font-semibold text-gray-400">Tanggal Masuk</p>

@@ -9,6 +9,6 @@ const topicScema = new Schema(
     }
 );
 
-const NomorKamarModel = mongoose.models.NomorKamar || mongoose.model("NomorKamar", topicScema);
+const NomorKamarModel = mongoose.models.ListKamar || mongoose.model("ListKamar", topicScema);
 
 export default NomorKamarModel;

@@ -23,13 +23,13 @@ export default async function editSewa({ params }: { params: Promise<{ id?: stri
 
     const sewaId = id ?? "default-id";
     const { sewa } = await getSewaById(sewaId);
-    const { nama,hp,klg,ktp,kamar,tanggal } = sewa;
+    const { nama,hp,keluarga,durasi,kamar,tanggal } = sewa;
 
     return (
     <>
         
         <NavbarAdmin />
-        <EditSewaForm id={sewaId} nama={nama} hp={hp} klg={klg} ktp={ktp} kamar={kamar} tanggal={tanggal} />
+        <EditSewaForm id={sewaId} nama={nama} hp={hp} keluarga={keluarga} durasi={durasi} kamar={kamar} tanggal={tanggal} />
     </>
     );
 }

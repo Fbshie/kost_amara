@@ -15,17 +15,17 @@ interface EditSewaFormProps {
     id: string;
     nama: string;
     hp: string;
-    klg: string;
-    ktp: string;
+    keluarga: string;
+    durasi: string;
     kamar: number;
     tanggal: string;
 }
 
-export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }: EditSewaFormProps) {
+export default function EditSewaForm({ id, nama, hp, keluarga, durasi, kamar, tanggal }: EditSewaFormProps) {
     const [newNama, setNewNama] = useState(nama);
     const [newHp, setNewHp] = useState(hp);
-    const [newKlg, setNewKlg] = useState(klg);
-    const [newKtp, setNewKtp] = useState(ktp);
+    const [newKeluarga, setNewKeluarga] = useState(keluarga);
+    const [newDurasi, setNewDurasi] = useState(durasi);
     const [newKamar, setNewKamar] = useState(kamar);
     const [newTanggal, setNewTanggal] = useState(tanggal);
 
@@ -40,7 +40,7 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }:
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({ newNama, newHp, newKlg, newKtp, newKamar, newTanggal }),
+                body: JSON.stringify({ newNama, newHp, newKeluarga, newDurasi, newKamar, newTanggal }),
             });
 
             if (!res.ok) {
@@ -78,15 +78,15 @@ export default function EditSewaForm({ id, nama, hp, klg, ktp, kamar, tanggal }:
 
                     <p className="font-semibold text-gray-400">Alamat Keluarga</p>
                     <input
-                        onChange={(e) => setNewKlg(e.target.value)}
-                        value={newKlg}
+                        onChange={(e) => setNewDurasi(e.target.value)}
+                        value={newKeluarga}
                         type="text"
                         className="input input-bordered input-warning w-full max-w-xs" />
 
-                    <p className="font-semibold text-gray-400">No. Ktp</p>
+                    <p className="font-semibold text-gray-400">Durasi</p>
                     <input
-                        onChange={(e) => setNewKtp(e.target.value)}
-                        value={newKtp}
+                        onChange={(e) => setNewDurasi(e.target.value)}
+                        value={newDurasi}
                         type="text"
                         className="input input-bordered input-warning w-full max-w-xs" />
 

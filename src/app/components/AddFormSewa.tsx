@@ -15,31 +15,41 @@ const formatTanggal = (value: string): string => {
 
 export default function AddFormSewa() {
 
-    const [nomor_kamar,setNomorKamar] = useState([]); 
-
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");
-    const [klg, setKlg] = useState("");
-    const [ktp, setKtp] = useState("");
+    const [keluarga, setKeluarga] = useState("");
+    const [durasi, setDurasi] = useState("");
+    const [durasiOptions, setDurasiOptions] = useState([]);
     const [kamar, setKamar] = useState("");
+    const [kamarOptions, setKamarOptions] = useState([]);
     const [tanggal, setTanggal] = useState("");
     const [isClient, setIsClient] = useState(false);
 
     const router = useRouter();
 
-    useEffect(() =>{
+    useEffect(() => {
         setIsClient(true);
-      }, []);
+
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/waktuSewa`)
+            .then((res) => res.json())
+            .then((data) => setDurasiOptions(data.waktuSewa || []))
+            .catch((error) => console.error("Error fetching durasi options:", error));
+
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/listKamar`)
+            .then((res) => res.json())
+            .then((data) => setKamarOptions(data.listKamar || []))
+            .catch((error) => console.error("Error fetching kamar options:", error));
+
+    }, []);
 
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!nama || !hp || !kamar || !tanggal || !klg || !ktp || !kamar) {
+        if (!nama || !hp || !kamar || !tanggal || !keluarga || !durasi || !kamar) {
             alert("Semua data Wajib di isi!");
             return;
         }
 
-        
 
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/sewa`, {
@@ -47,11 +57,10 @@ export default function AddFormSewa() {
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({ nama, hp, klg, ktp, kamar, tanggal }),
+                body: JSON.stringify({ nama, hp, keluarga, durasi, kamar, tanggal }),
             });
 
             if (res.ok) {
-                localStorage.setItem("nama",nama)
                 router.push("/");
                 alert("Terima Kasih sudah mengisi Form");
             } else {
@@ -64,74 +73,91 @@ export default function AddFormSewa() {
     };
 
     if (!isClient) {
-        return null; // Menjaga agar tidak ada konten SSR yang ditampilkan sebelum klien siap
-      }
+        return null;
+    }
 
-    
 
     return (
 
-           
-            <div className="flex justify-center my-9">
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
+        <div className="flex justify-center my-9">
 
-                    <h1 className="text-center text-xl font-semibold text-second">Silahkan isi data anda</h1>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
 
-                    <div className=" px-4 pt-3 ">
-                        <p className="font-semibold text-gray-400">Nama</p>
-                        <input
-                            onChange={(e) => setNama(e.target.value)}
-                            value={nama}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs " />
-                    </div>
+                <h1 className="text-center text-xl font-semibold text-second">Silahkan isi data anda</h1>
 
-                    <div className=" px-4">
-                        <p className="font-semibold text-gray-400">No. HandPhone</p>
-                        <input
-                            onChange={(e) => setHp(e.target.value)}
-                            value={hp}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered  w-64 max-w-xs" />
-                    </div>
+                <div className=" px-4 pt-3 ">
+                    <p className="font-semibold text-gray-400">Nama</p>
+                    <input
+                        onChange={(e) => setNama(e.target.value)}
+                        value={nama}
+                        type="text"
+                        placeholder=""
+                        className="input input-bordered w-64 max-w-xs " />
+                </div>
 
-                    <div className=" px-4">
-                        <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat </p>
-                        <input
-                            onChange={(e) => setKlg(e.target.value)}
-                            value={klg}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs" />
-                    </div>
+                <div className=" px-4">
+                    <p className="font-semibold text-gray-400">No. HandPhone</p>
+                    <input
+                        onChange={(e) => setHp(e.target.value)}
+                        value={hp}
+                        type="text"
+                        placeholder=""
+                        className="input input-bordered  w-64 max-w-xs" />
+                </div>
 
-                    <div className=" px-4 ">
-                        <p className="font-semibold text-gray-400">No. Ktp </p>
-                        <input
-                            onChange={(e) => setKtp(e.target.value)}
-                            value={ktp}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs" />
-                    </div>
+                <div className=" px-4">
+                    <p className="font-semibold text-gray-400">Alamat Keluarga Terdekat </p>
+                    <input
+                        onChange={(e) => setKeluarga(e.target.value)}
+                        value={keluarga}
+                        type="text"
+                        placeholder=""
+                        className="input input-bordered w-64 max-w-xs" />
+                </div>
 
-                    <div className=" px-4 ">
-                        <p className="font-semibold text-gray-400">No. Kamar</p>
-                        <input
-                            onChange={(e) => setKamar(e.target.value)}
-                            value={kamar}
-                            type="text"
-                            placeholder=""
-                            className="input input-bordered w-64 max-w-xs" />
-                    </div>
+                <div className="px-4">
+                    <p className="font-semibold text-gray-400">Durasi</p>
+                    <select
+                        onChange={(e) => setDurasi(e.target.value)}
+                        value={durasi}
+                        className="input input-bordered w-64 max-w-xs"
+                    >
+                        <option value="" disabled>
+                            Pilih Durasi
+                        </option>
+                        {durasiOptions.map((option: any) => (
+                            <option key={option._id} value={option._id}>
+                                {option.durasi_sewa_kamar}
+                            </option>
+                        ))}
+                    </select>
 
-            <div className="px-4 pb-3">
-                <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+                </div>
+
+                <div className="px-4">
+                    <p className="font-semibold text-gray-400">Nomor Kamar</p>
+                    <select
+                        onChange={(e) => setKamar(e.target.value)}
+                        value={kamar}
+                        className="input input-bordered w-64 max-w-xs"
+                    >
+                        <option value="" disabled>
+                            Pilih Nomor Kamar
+                        </option>
+                        {kamarOptions.map((option: any) => (
+                            <option key={option._id} value={option._id}>
+                                {option.nomor_kamar}
+                            </option>
+                        ))}
+                    </select>
+
+                </div>
 
                 <div className="px-4 pb-3">
+                    <p className="font-semibold text-gray-400">Tanggal Masuk</p>
+
+                    <div className="px-4 pb-3">
                         <input type="datetime-local"
                             onChange={(e) => {
                                 const rawValue = e.target.value;
@@ -143,15 +169,15 @@ export default function AddFormSewa() {
                     </div>
 
 
-            </div>
-                    <button
-                        type="submit"
-                        className="btn btn-success text-white">
-                        Kirim
-                    </button>
-                </form>
+                </div>
+                <button
+                    type="submit"
+                    className="btn btn-success text-white">
+                    Kirim
+                </button>
+            </form>
 
-            </div>
+        </div>
 
 
     );

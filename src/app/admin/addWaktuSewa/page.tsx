@@ -8,23 +8,23 @@ import NavbarAdmin from "../adminComponents/NavbarAdmin";
 
 export default function AddKamar() {
 
-    const [nomor_kamar, setNomorKamar] = useState("");
+    const [durasi_sewa_kamar, setDurasi] = useState("");
     
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!nomor_kamar) {
+        if (!durasi_sewa_kamar) {
             alert("Jumlah kamar dibutuhkan!");
             return;
         }
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/listKamar`,{
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/waktuSewa`,{
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({nomor_kamar}),
+                body: JSON.stringify({durasi_sewa_kamar}),
             });
 
             if (res.ok) {
@@ -52,10 +52,10 @@ export default function AddKamar() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-4 my-6">
                     <h1 className="text-center text-xl font-semibold text-second">Isi ketersedian kamar</h1>
                     <input
-                        onChange={(e) => setNomorKamar(e.target.value)}
-                        value={nomor_kamar}
+                        onChange={(e) => setDurasi(e.target.value)}
+                        value={durasi_sewa_kamar}
                         type="text"
-                        placeholder="Nomor Kamar"
+                        placeholder="Waktu Sewa Kamar"
                         className="input input-bordered input-warning w-72 max-w-xs " />
 
 

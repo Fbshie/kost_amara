@@ -5,8 +5,8 @@ import Sewa from "../../../../../models/SewaModel";
 type UpdateSewaPayload = {
     newNama: string;
     newHp: string;
-    newKlg: string;
-    newKtp: string;
+    newKeluarga: string;
+    newDurasi: string;
     newKamar: number;
     newTanggal: string;
   };
@@ -16,9 +16,9 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const { id } = await params;
 
     const body: UpdateSewaPayload = await request.json();
-    const { newNama: nama,  newHp: hp, newKlg:klg, newKtp:ktp, newKamar:kamar, newTanggal:tanggal} = body;
+    const { newNama: nama,  newHp: hp, newKeluarga:keluarga, newDurasi:durasi, newKamar:kamar, newTanggal:tanggal} = body;
     await connectMongoDB();
-    await Sewa.findByIdAndUpdate(id, {nama,hp,klg,ktp,kamar,tanggal});
+    await Sewa.findByIdAndUpdate(id, {nama,hp,keluarga,durasi,kamar,tanggal});
     return NextResponse.json ({ message: "Data sewa Updated" }, { status: 200 });
 }
 
@@ -26,6 +26,13 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 ): Promise<NextResponse> {
     const { id } = await params;
     await connectMongoDB();
-    const sewa = await Sewa.findOne({ _id: id });
+    const sewa = await Sewa.findOne({ _id: id })
+    .populate({ path: "durasi", select: "durasi_sewa_kamar" })
+    .populate({ path: "kamar", select: "nomor_kamar" });
+
+    if (!sewa) {
+      return NextResponse.json({ message: "Data sewa tidak ditemukan" }, { status: 404 });
+  }
+
     return NextResponse.json({ sewa }, {status: 200});
 }

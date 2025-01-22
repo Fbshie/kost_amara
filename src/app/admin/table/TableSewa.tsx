@@ -13,8 +13,8 @@ interface Sewa {
   _id: string;
   nama: string;
   hp: string;
-  klg: string;
-  ktp: string;
+  keluarga: string;
+  durasi: string;
   kamar: number;
   tanggal: string;
 }
@@ -43,8 +43,8 @@ export default function TableSewa() {
               
               <th>Nama</th>
               <th>No. Hp</th>
-              <th>Alamat Klg</th>
-              <th>Nik</th>
+              <th>Alamat Keluarga</th>
+              <th>Durasi Penyewaan</th>
               <th>No. Kmr</th>
               <th>Tanggal masuk</th>
               <th></th>
@@ -58,8 +58,8 @@ export default function TableSewa() {
 
                           <td> {rs.nama}</td>
                           <td> {rs.hp}</td>
-                          <td> {rs.klg}</td>
-                          <td> {rs.ktp}</td>
+                          <td> {rs.keluarga}</td>
+                          <td> {rs.durasi}</td>
                           <td> {rs.kamar}</td>
                           <td> {rs.tanggal} </td>
                           <th>
