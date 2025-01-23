@@ -78,7 +78,7 @@ export default function EditSewaForm({ id, nama, hp, keluarga, durasi, kamar, ta
 
                     <p className="font-semibold text-gray-400">Alamat Keluarga</p>
                     <input
-                        onChange={(e) => setNewDurasi(e.target.value)}
+                        onChange={(e) => setNewKeluarga(e.target.value)}
                         value={newKeluarga}
                         type="text"
                         className="input input-bordered input-warning w-full max-w-xs" />
