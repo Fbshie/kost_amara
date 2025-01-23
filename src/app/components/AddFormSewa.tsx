@@ -22,7 +22,7 @@ export default function AddFormSewa() {
 
     type KamarOption = {
         _id: string;
-        nomor_kamar: string;
+        nomor_kamar: number;
     };
 
     const [nama, setNama] = useState("");
