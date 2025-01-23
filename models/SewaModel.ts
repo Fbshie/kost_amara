@@ -7,13 +7,13 @@ const topicScema = new Schema(
         keluarga: {type: String, required: true},
         durasi: {type: String, required: true},
         kamar: {type: Number, required: true},
-        tanggal: {type:mongoose.Schema.Types.ObjectId, ref: "ListKamar", required: true},
+        tanggal: {type: String, required: true},
     },
     {
         timestamps: true,
     }
 );
 
-const SewaModel = mongoose.models.Penyewa1 || mongoose.model("Penyewa1", topicScema);
+const SewaModel = mongoose.models.Penyewa2 || mongoose.model("Penyewa2", topicScema);
 
 export default SewaModel;
