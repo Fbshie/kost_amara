@@ -15,13 +15,23 @@ const formatTanggal = (value: string): string => {
 
 export default function AddFormSewa() {
 
+    type DurasiOption = {
+        _id: string;
+        durasi_sewa_kamar: string;
+    };
+
+    type KamarOption = {
+        _id: string;
+        nomor_kamar: string;
+    };
+
     const [nama, setNama] = useState("");
     const [hp, setHp] = useState("");
     const [keluarga, setKeluarga] = useState("");
     const [durasi, setDurasi] = useState("");
-    const [durasiOptions, setDurasiOptions] = useState([]);
+    const [durasiOptions, setDurasiOptions] = useState<DurasiOption[]>([]);
     const [kamar, setKamar] = useState("");
-    const [kamarOptions, setKamarOptions] = useState([]);
+    const [kamarOptions, setKamarOptions] = useState<KamarOption[]>([]);
     const [tanggal, setTanggal] = useState("");
     const [isClient, setIsClient] = useState(false);
 
@@ -32,13 +42,14 @@ export default function AddFormSewa() {
 
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/waktuSewa`)
             .then((res) => res.json())
-            .then((data) => setDurasiOptions(data.waktuSewa || []))
+            .then((data: { waktuSewa: DurasiOption[] }) => setDurasiOptions(data.waktuSewa || []))
             .catch((error) => console.error("Error fetching durasi options:", error));
 
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/listKamar`)
             .then((res) => res.json())
-            .then((data) => setKamarOptions(data.listKamar || []))
+            .then((data: { listKamar: KamarOption[] }) => setKamarOptions(data.listKamar || []))
             .catch((error) => console.error("Error fetching kamar options:", error));
+
 
     }, []);
 
@@ -124,9 +135,9 @@ export default function AddFormSewa() {
                         className="input input-bordered w-64 max-w-xs"
                     >
                         <option value="" disabled>
-                            Pilih Durasi
+                            (Pilih Durasi)
                         </option>
-                        {durasiOptions.map((option: any) => (
+                        {durasiOptions.map((option) => (
                             <option key={option._id} value={option._id}>
                                 {option.durasi_sewa_kamar}
                             </option>
@@ -143,9 +154,9 @@ export default function AddFormSewa() {
                         className="input input-bordered w-64 max-w-xs"
                     >
                         <option value="" disabled>
-                            Pilih Nomor Kamar
+                            (Pilih Nomor Kamar)
                         </option>
-                        {kamarOptions.map((option: any) => (
+                        {kamarOptions.map((option) => (
                             <option key={option._id} value={option._id}>
                                 {option.nomor_kamar}
                             </option>
