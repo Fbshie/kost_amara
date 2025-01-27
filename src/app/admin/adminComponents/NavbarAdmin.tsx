@@ -39,7 +39,6 @@ export default function NavbarAdmin() {
                                         <li><Link href={"/admin"}>Penyewa</Link></li>
                                         <li><Link href={"/laporPageAdmin"}>Keluhan</Link></li>
                                         <li><Link href={"/kamarPageAdmin"}>Isi Kamar</Link></li>
-                                        <li><Link href={"/"}>Nomor Kamar</Link></li>
 
                                     </ul>
                                 </details>
